@@ -1,0 +1,7 @@
+{
+  "library_name": "Mem0",
+  "complexity_level": "simple set of 2-5 commands",
+  "deep_research_path": "../../../plan.md",
+  "task_name": "mem0_add_and_search_basic",
+  "output_dir": "."
+}

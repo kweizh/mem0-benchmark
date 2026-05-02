@@ -1,0 +1,10 @@
+[metadata]
+name = "mem0_get_all_memories"
+description = "Use mem0 to add and retrieve all memories for a user."
+author = "Pochi"
+
+[environment]
+image = "mem0_get_all_memories"
+
+[execution]
+timeout = 300
