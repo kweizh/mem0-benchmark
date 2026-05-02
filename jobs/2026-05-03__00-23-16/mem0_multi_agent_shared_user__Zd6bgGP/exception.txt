@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py", line 538, in run
+    await self._execute_agent()
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py", line 285, in _execute_agent
+    await asyncio.wait_for(
+  File "/opt/miniconda3/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py", line 41, in wrapper
+    return await fn(self, instruction, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kw/code/zealt/pochi-harbor/agents/pochi.py", line 209, in run
+    await self.exec_as_agent(
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py", line 358, in exec_as_agent
+    return await self._exec(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py", line 321, in _exec
+    raise NonZeroAgentExitCodeError(
+harbor.agents.installed.base.NonZeroAgentExitCodeError: Command failed (exit 1): export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Multi-Agent Shared User Context
+
+## Background
+In multi-agent systems, agents often share user context but maintain separate "Agent Memories" (e.g., personality, instructions). Mem0 isolates memories by entity IDs (`user_id`, `agent_id`, etc.). To retrieve both a user's memory and a specific agent's memory for a prompt, you must query for both correctly.
+
+## Requirements
+Write a Python script `/home/user/mem0-project/multi_agent.py` that does the following:
+1. Initializes a Mem0 `Memory` instance using the open-source configuration (default providers are fine).
+2. Adds the following memories:
+   - User memory (`user_id="alice"`): "I am a vegetarian and allergic to nuts."
+   - Agent memory (`agent_id="coach"`): "You are a fitness coach. Always encourage the user to push their limits."
+   - Agent memory (`agent_id="nutribot"`): "You are a nutritionist. Recommend high-protein plant-based meals."
+3. Performs a search for the query "Suggest a dinner plan" for the "Coach" interacting with "alice". You must retrieve BOTH Alice's user memory and the Coach's agent memory. Save the list of retrieved memory texts (just the string values) to `/home/user/mem0-project/coach_results.json`.
+4. Performs a search for the query "Suggest a dinner plan" for the "NutriBot" interacting with "alice". You must retrieve BOTH Alice's user memory and the NutriBot's agent memory. Save the list of retrieved memory texts to `/home/user/mem0-project/nutribot_results.json`.
+
+## Constraints
+- Project path: `/home/user/mem0-project`
+- The script must be self-contained and runnable via `python3 multi_agent.py`.
+- You must use `OPENAI_API_KEY` from the environment for Mem0's default LLM/Embedder.
+
+## Integrations
+- OpenAI
+EOF
+stdout: [37m2026-05-02 16:28:29.828[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:1[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	pochi v0.6.8
+[37m2026-05-02 16:28:30.339[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519633[39m[0m[0m[1m[37m	loadAgents[39m[22m[0m[0m	Loaded 6 custom agents (6 valid, 0 invalid)
+[37m2026-05-02 16:28:30.340[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519634[39m[0m[0m[1m[37m	loadSkills[39m[22m[0m[0m	Loaded 2 skills (2 valid, 0 invalid)
+[37m2026-05-02 16:28:30.398[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:444677[39m[0m[0m[1m[37m	PochiVendor[39m[22m[0m[0m	JWT is expiring or missing, fetching a new one
+[37m2026-05-02 16:28:31.804[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:416517[39m[0m[0m[1m[37m	MCPHub[39m[22m[0m[0m	MCP servers configuration changed via signal:
+[37m2026-05-02 16:28:31.804[39m[0m[0m	[32m[1mDEBUG ... [truncated]
+stderr: None

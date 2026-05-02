@@ -1,0 +1,106 @@
+{
+    "id": "0b12e5a4-2a01-4fd9-afe0-04de9373da4a",
+    "task_name": "mem0_delete_all_agent_memories",
+    "trial_name": "mem0_delete_all_agent_memories__TMHT7Fy",
+    "trial_uri": "file:///home/kw/code/zealt/pochi-harbor/jobs/2026-05-03__00-23-16/mem0_delete_all_agent_memories__TMHT7Fy",
+    "task_id": {
+        "path": "/home/kw/code/zealt/mem0-benchmark/tasks/mem0_delete_all_agent_memories"
+    },
+    "source": "tasks",
+    "task_checksum": "bde1c068dc18239536b1d0052317dd88bf60882b950f3e478d7a03ada1d5592c",
+    "config": {
+        "task": {
+            "path": "/home/kw/code/zealt/mem0-benchmark/tasks/mem0_delete_all_agent_memories",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "tasks"
+        },
+        "trial_name": "mem0_delete_all_agent_memories__TMHT7Fy",
+        "trials_dir": "jobs/2026-05-03__00-23-16",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "agents.pochi:Pochi",
+            "model_name": "google/gemini-3-flash",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts_json": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "3793f67d-9c5e-4fd4-9d40-9db098036a95"
+    },
+    "agent_info": {
+        "name": "pochi",
+        "version": "0.6.8",
+        "model_info": {
+            "name": "gemini-3-flash",
+            "provider": "google"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 0,
+        "n_cache_tokens": 0,
+        "n_output_tokens": 0,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "exception_info": {
+        "exception_type": "NonZeroAgentExitCodeError",
+        "exception_message": "Command failed (exit 1): export PATH=\"$HOME/.pochi/bin:$PATH\"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'\n# Preserving your work\n\nSave a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.\n\n---\n\n# Delete All Memories for a Specific Agent in Mem0\n\n## Background\nMem0 is a memory layer for AI agents. Memories can be scoped to specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. In a multi-agent system, you might want to clear all memories associated with a specific agent without affecting other agents or users.\n\n## Requirements\n- Initialize a Mem0 Open Source `Memory` instance using the default configuration (which uses Qdrant and OpenAI by default, or just the default in-memory/local setup if no config is provided, but we will provide a basic config).\n- Add a few memories for `agent_id=\"travel-agent\"`.\n- Add a few memories for `agent_id=\"support-agent\"`.\n- Delete all memories associated with `agent_id=\"travel-agent\"`.\n- Verify that memories for `agent_id=\"travel-agent\"` are deleted, while memories for `agent_id=\"support-agent\"` remain intact.\n- Save the count of remaining memories for `agent_id=\"support-agent\"` to a log file.\n\n## Implementation Guide\n1. Create a Python script `/home/user/mem0-project/delete_memories.py`.\n2. Initialize `from mem0 import Memory` and `memory = Memory()`.\n3. Add memories: \n   - `memory.add(\"I like window seats\", agent_id=\"travel-agent\")`\n   - `memory.add(\"User prefers email support\", agent_id=\"support-agent\")`\n4. Delete all memories for the travel agent: `memory.delete_all(agent_id=\"travel-agent\")`.\n5. Get all memories for the support agent: `support_mems = memory.get_all(agent_id=\"support-agent\")`.\n6. Write the number of remaining support agent memories to `/home/user/mem0-project/output.log`.\n\n## Constraints\n- Project path: `/home/user/mem0-project`\n- Log file: `/home/user/mem0-project/output.log`\n- Use Mem0 Open Source version.\n\n## Integrations\n- OpenAI (for default embedding/LLM in Mem0)\nEOF\nstdout: \u001b[37m2026-05-02 16:26:11.815\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37mnative:1\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochi\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tpochi v0.6.8\n\u001b[37m2026-05-02 16:26:12.326\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:519633\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tloadAgents\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tLoaded 6 custom agents (6 valid, 0 invalid)\n\u001b[37m2026-05-02 16:26:12.327\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:519634\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tloadSkills\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tLoaded 2 skills (2 valid, 0 invalid)\n\u001b[37m2026-05-02 16:26:12.391\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:444677\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochiVendor\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tJWT is expiring or missing, fetching a new one\n\u001b[37m2026-05-02 16:26:13.287\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:416517\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tMCPHub\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tMCP servers configuration changed via signal:\n\u001b[37m2026-05-02 16:26:13.288\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b ... [truncated]\nstderr: None",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py\", line 538, in run\n    await self._execute_agent()\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py\", line 285, in _execute_agent\n    await asyncio.wait_for(\n  File \"/opt/miniconda3/lib/python3.12/asyncio/tasks.py\", line 520, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py\", line 41, in wrapper\n    return await fn(self, instruction, *args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/kw/code/zealt/pochi-harbor/agents/pochi.py\", line 209, in run\n    await self.exec_as_agent(\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py\", line 358, in exec_as_agent\n    return await self._exec(\n           ^^^^^^^^^^^^^^^^^\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py\", line 321, in _exec\n    raise NonZeroAgentExitCodeError(\nharbor.agents.installed.base.NonZeroAgentExitCodeError: Command failed (exit 1): export PATH=\"$HOME/.pochi/bin:$PATH\"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'\n# Preserving your work\n\nSave a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.\n\n---\n\n# Delete All Memories for a Specific Agent in Mem0\n\n## Background\nMem0 is a memory layer for AI agents. Memories can be scoped to specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. In a multi-agent system, you might want to clear all memories associated with a specific agent without affecting other agents or users.\n\n## Requirements\n- Initialize a Mem0 Open Source `Memory` instance using the default configuration (which uses Qdrant and OpenAI by default, or just the default in-memory/local setup if no config is provided, but we will provide a basic config).\n- Add a few memories for `agent_id=\"travel-agent\"`.\n- Add a few memories for `agent_id=\"support-agent\"`.\n- Delete all memories associated with `agent_id=\"travel-agent\"`.\n- Verify that memories for `agent_id=\"travel-agent\"` are deleted, while memories for `agent_id=\"support-agent\"` remain intact.\n- Save the count of remaining memories for `agent_id=\"support-agent\"` to a log file.\n\n## Implementation Guide\n1. Create a Python script `/home/user/mem0-project/delete_memories.py`.\n2. Initialize `from mem0 import Memory` and `memory = Memory()`.\n3. Add memories: \n   - `memory.add(\"I like window seats\", agent_id=\"travel-agent\")`\n   - `memory.add(\"User prefers email support\", agent_id=\"support-agent\")`\n4. Delete all memories for the travel agent: `memory.delete_all(agent_id=\"travel-agent\")`.\n5. Get all memories for the support agent: `support_mems = memory.get_all(agent_id=\"support-agent\")`.\n6. Write the number of remaining support agent memories to `/home/user/mem0-project/output.log`.\n\n## Constraints\n- Project path: `/home/user/mem0-project`\n- Log file: `/home/user/mem0-project/output.log`\n- Use Mem0 Open Source version.\n\n## Integrations\n- OpenAI (for default embedding/LLM in Mem0)\nEOF\nstdout: \u001b[37m2026-05-02 16:26:11.815\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37mnative:1\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochi\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tpochi v0.6.8\n\u001b[37m2026-05-02 16:26:12.326\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:519633\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tloadAgents\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tLoaded 6 custom agents (6 valid, 0 invalid)\n\u001b[37m2026-05-02 16:26:12.327\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:519634\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tloadSkills\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tLoaded 2 skills (2 valid, 0 invalid)\n\u001b[37m2026-05-02 16:26:12.391\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:444677\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochiVendor\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tJWT is expiring or missing, fetching a new one\n\u001b[37m2026-05-02 16:26:13.287\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:416517\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tMCPHub\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tMCP servers configuration changed via signal:\n\u001b[37m2026-05-02 16:26:13.288\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b ... [truncated]\nstderr: None\n",
+        "occurred_at": "2026-05-03T00:26:20.977629"
+    },
+    "started_at": "2026-05-02T16:25:10.936904Z",
+    "finished_at": "2026-05-02T16:27:22.440351Z",
+    "environment_setup": {
+        "started_at": "2026-05-02T16:25:10.937633Z",
+        "finished_at": "2026-05-02T16:25:37.796878Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-02T16:25:37.796886Z",
+        "finished_at": "2026-05-02T16:26:10.291710Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-02T16:26:10.291754Z",
+        "finished_at": "2026-05-02T16:26:20.977157Z"
+    },
+    "verifier": {
+        "started_at": "2026-05-02T16:26:20.978751Z",
+        "finished_at": "2026-05-02T16:26:33.427761Z"
+    }
+}

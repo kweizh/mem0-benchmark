@@ -1,0 +1,73 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 968ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py FFFF                                           [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_script_exists ______________________________
+
+    def test_script_exists():
+>       assert os.path.isfile(SCRIPT_PATH), f"Script not found at {SCRIPT_PATH}"
+E       AssertionError: Script not found at /home/user/mem0_project/memory_ops.py
+E       assert False
+E        +  where False = <function isfile at 0x7f98814f8220>('/home/user/mem0_project/memory_ops.py')
+E        +    where <function isfile at 0x7f98814f8220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:11: AssertionError
+____________________________ test_script_execution _____________________________
+
+    def test_script_execution():
+        result = subprocess.run(
+            ["python3", "memory_ops.py"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, f"Script execution failed: {result.stderr}"
+E       AssertionError: Script execution failed: python3: can't open file '/home/user/mem0_project/memory_ops.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['python3', 'memory_ops.py'], returncode=2, stdout='', stderr="python3: can't open file '/home/user/mem0_project/memory_ops.py': [Errno 2] No such file or directory\n").returncode
+
+tests/test_final_state.py:18: AssertionError
+___________________________ test_results_file_exists ___________________________
+
+    def test_results_file_exists():
+>       assert os.path.isfile(RESULTS_PATH), f"Results file not found at {RESULTS_PATH}"
+E       AssertionError: Results file not found at /home/user/mem0_project/search_results.json
+E       assert False
+E        +  where False = <function isfile at 0x7f98814f8220>('/home/user/mem0_project/search_results.json')
+E        +    where <function isfile at 0x7f98814f8220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:21: AssertionError
+_________________________ test_results_contain_memory __________________________
+
+    def test_results_contain_memory():
+>       with open(RESULTS_PATH, 'r') as f:
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/mem0_project/search_results.json'
+
+tests/test_final_state.py:24: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_script_exists - AssertionError: Script...
+FAILED tests/test_final_state.py::test_script_execution - AssertionError: Scr...
+FAILED tests/test_final_state.py::test_results_file_exists - AssertionError: ...
+FAILED tests/test_final_state.py::test_results_contain_memory - FileNotFoundE...
+============================== 4 failed in 0.04s ===============================

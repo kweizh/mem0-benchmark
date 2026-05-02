@@ -1,0 +1,68 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 0,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739065.6885352,
+            "stop": 1777739065.722873
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_alice_memories_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006982018239796162,
+                "start": 1777739065.697954,
+                "stop": 1777739065.714845,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_alice_memories_file_exists():\n        \"\"\"Priority 3: Check if alice_memories.json exists.\"\"\"\n>       assert os.path.isfile(ALICE_FILE), f\"Expected file {ALICE_FILE} does not exist.\"\nE       AssertionError: Expected file /home/user/mem0_project/alice_memories.json does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x79395353c220>('/home/user/mem0_project/alice_memories.json')\nE        +    where <function isfile at 0x79395353c220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_bob_memories_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006838459521532059,
+                "start": 1777739065.715254,
+                "stop": 1777739065.7179213,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_bob_memories_file_exists():\n        \"\"\"Priority 3: Check if bob_memories.json exists.\"\"\"\n>       assert os.path.isfile(BOB_FILE), f\"Expected file {BOB_FILE} does not exist.\"\nE       AssertionError: Expected file /home/user/mem0_project/bob_memories.json does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x79395353c220>('/home/user/mem0_project/bob_memories.json')\nE        +    where <function isfile at 0x79395353c220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:15: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_alice_memories_content",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00046787713654339314,
+                "start": 1777739065.7182064,
+                "stop": 1777739065.7203724,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_alice_memories_content():\n        \"\"\"Priority 3: Verify Alice's memories contain peanut allergy but not vegetarianism.\"\"\"\n>       with open(ALICE_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/mem0_project/alice_memories.json'\n\ntests/test_final_state.py:19: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_final_state.py::test_bob_memories_content",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0004190949257463217,
+                "start": 1777739065.7205584,
+                "stop": 1777739065.7227075,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_bob_memories_content():\n        \"\"\"Priority 3: Verify Bob's memories contain vegetarianism but not peanut allergy.\"\"\"\n>       with open(BOB_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/mem0_project/bob_memories.json'\n\ntests/test_final_state.py:33: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

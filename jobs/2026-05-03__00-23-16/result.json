@@ -1,0 +1,61 @@
+{
+    "id": "3793f67d-9c5e-4fd4-9d40-9db098036a95",
+    "started_at": "2026-05-03T00:23:20.027830",
+    "finished_at": "2026-05-03T00:30:42.172004",
+    "n_total_trials": 15,
+    "stats": {
+        "n_trials": 15,
+        "n_errors": 15,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 15,
+                "n_errors": 15,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "mem0_add_messages_list__8jcCEph",
+                            "mem0_cross_user_isolation__FaCTNm2",
+                            "mem0_add_and_search_basic__77jWFUf",
+                            "mem0_custom_llm_openai_model__YTPCihg",
+                            "mem0_delete_specific_memory__33YLgWz",
+                            "mem0_complex_or_filtering__cDZMZJz",
+                            "mem0_delete_all_agent_memories__TMHT7Fy",
+                            "mem0_delete_all_user_memories__NZPVg8L",
+                            "mem0_history_extraction__dZxhraf",
+                            "mem0_metadata_filtering__XuqCD8D",
+                            "mem0_search_score_threshold__5nVLWQj",
+                            "mem0_multi_agent_shared_user__Zd6bgGP",
+                            "mem0_update_nonexistent_memory__HSsEVkK",
+                            "mem0_update_memory__Yirv2c6",
+                            "mem0_search_limit_results__aeTLtHM"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "NonZeroAgentExitCodeError": [
+                        "mem0_add_messages_list__8jcCEph",
+                        "mem0_cross_user_isolation__FaCTNm2",
+                        "mem0_add_and_search_basic__77jWFUf",
+                        "mem0_custom_llm_openai_model__YTPCihg",
+                        "mem0_delete_specific_memory__33YLgWz",
+                        "mem0_complex_or_filtering__cDZMZJz",
+                        "mem0_delete_all_agent_memories__TMHT7Fy",
+                        "mem0_delete_all_user_memories__NZPVg8L",
+                        "mem0_history_extraction__dZxhraf",
+                        "mem0_metadata_filtering__XuqCD8D",
+                        "mem0_search_score_threshold__5nVLWQj",
+                        "mem0_multi_agent_shared_user__Zd6bgGP",
+                        "mem0_update_nonexistent_memory__HSsEVkK",
+                        "mem0_update_memory__Yirv2c6",
+                        "mem0_search_limit_results__aeTLtHM"
+                    ]
+                }
+            }
+        }
+    }
+}

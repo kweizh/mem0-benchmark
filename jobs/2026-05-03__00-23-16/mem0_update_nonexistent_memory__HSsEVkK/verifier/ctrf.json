@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739358.9758532,
+            "stop": 1777739359.0150883
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006398260593414307,
+                "start": 1777739358.9843335,
+                "stop": 1777739358.999313,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_exists():\n        \"\"\"Priority 3: Check if the script exists.\"\"\"\n>       assert os.path.isfile(SCRIPT_FILE), f\"Script not found at {SCRIPT_FILE}\"\nE       AssertionError: Script not found at /home/user/test_update.py\nE       assert False\nE        +  where False = <function isfile at 0x782a825c0220>('/home/user/test_update.py')\nE        +    where <function isfile at 0x782a825c0220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_execution_and_output",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.01346997614018619,
+                "start": 1777739358.999521,
+                "stop": 1777739359.0149126,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution_and_output():\n        \"\"\"Priority 3: Run the script and check output file.\"\"\"\n        # Run the script to generate the output\n        result = subprocess.run(\n            [\"python3\", \"test_update.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: python3: can't open file '/home/user/test_update.py': [Errno 2] No such file or directory\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['python3', 'test_update.py'], returncode=2, stdout='', stderr=\"python3: can't open file '/home/user/test_update.py': [Errno 2] No such file or directory\\n\").returncode\n\ntests/test_final_state.py:22: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

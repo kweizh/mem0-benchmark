@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739193.2809901,
+            "stop": 1777739193.344967
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007674300577491522,
+                "start": 1777739193.2912416,
+                "stop": 1777739193.3067627,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_exists():\n>       assert os.path.isfile(SCRIPT_PATH), f\"Script {SCRIPT_PATH} does not exist.\"\nE       AssertionError: Script /home/user/mem0-project/delete_memories.py does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x7efe11fac220>('/home/user/mem0-project/delete_memories.py')\nE        +    where <function isfile at 0x7efe11fac220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:10: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_execution_and_output",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.015660489909350872,
+                "start": 1777739193.3070116,
+                "stop": 1777739193.324942,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution_and_output():\n        # Run the script\n        result = subprocess.run(\n            [\"python\", \"delete_memories.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: python: can't open file '/home/user/mem0-project/delete_memories.py': [Errno 2] No such file or directory\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['python', 'delete_memories.py'], returncode=2, stdout='', stderr=\"python: can't open file '/home/user/mem0-project/delete_memories.py': [Errno 2] No such file or directory\\n\").returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_travel_agent_memories_deleted",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.017123979283496737,
+                "start": 1777739193.325208,
+                "stop": 1777739193.3447933,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_travel_agent_memories_deleted():\n        # We can use a short python snippet to verify using mem0\n        verify_script = \"\"\"\n    from mem0 import Memory\n    memory = Memory()\n    travel_mems = memory.get_all(agent_id='travel-agent')\n    support_mems = memory.get_all(agent_id='support-agent')\n    \n    if travel_mems:\n        print(f\"FAILED: Found travel agent memories: {travel_mems}\")\n        exit(1)\n    if not support_mems:\n        print(\"FAILED: No support agent memories found\")\n        exit(1)\n    print(\"SUCCESS\")\n    \"\"\"\n        verify_path = os.path.join(PROJECT_DIR, \"verify_memories.py\")\n        with open(verify_path, \"w\") as f:\n            f.write(verify_script)\n    \n        result = subprocess.run(\n            [\"python\", \"verify_memories.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Verification of memories failed: {result.stdout} {result.stderr}\"\nE       AssertionError: Verification of memories failed:  Traceback (most recent call last):\nE           File \"/home/user/mem0-project/verify_memories.py\", line 2, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python', 'verify_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent call l...erify_memories.py\", line 2, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:61: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

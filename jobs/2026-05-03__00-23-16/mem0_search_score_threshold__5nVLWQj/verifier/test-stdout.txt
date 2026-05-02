@@ -1,0 +1,58 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 14ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py FF                                             [100%]
+
+=================================== FAILURES ===================================
+________________________ test_scripts_run_successfully _________________________
+
+    def test_scripts_run_successfully():
+        """Priority 1: Run the setup and search scripts to verify they work."""
+        setup_result = subprocess.run(
+            ["python3", "setup_memories.py"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert setup_result.returncode == 0, f"setup_memories.py failed: {setup_result.stderr}"
+E       AssertionError: setup_memories.py failed: Traceback (most recent call last):
+E           File "/home/user/project/setup_memories.py", line 2, in <module>
+E             from mem0 import Memory
+E         ModuleNotFoundError: No module named 'mem0'
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['python3', 'setup_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent call l...setup_memories.py", line 2, in <module>\n    from mem0 import Memory\nModuleNotFoundError: No module named \'mem0\'\n').returncode
+
+tests/test_final_state.py:13: AssertionError
+_____________ test_output_file_exists_and_contains_correct_memory ______________
+
+    def test_output_file_exists_and_contains_correct_memory():
+        """Priority 3: Verify the output file contains the correct filtered memory."""
+        output_file = os.path.join(PROJECT_DIR, "high_score_memories.txt")
+>       assert os.path.isfile(output_file), f"Output file {output_file} does not exist."
+E       AssertionError: Output file /home/user/project/high_score_memories.txt does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x790d406ac220>('/home/user/project/high_score_memories.txt')
+E        +    where <function isfile at 0x790d406ac220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_scripts_run_successfully - AssertionEr...
+FAILED tests/test_final_state.py::test_output_file_exists_and_contains_correct_memory
+============================== 2 failed in 0.04s ===============================

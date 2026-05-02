@@ -1,0 +1,100 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py FF                                             [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_update_memory_script_exists _______________________
+
+    def test_update_memory_script_exists():
+        script_path = os.path.join(PROJECT_DIR, "update_memory.py")
+>       assert os.path.isfile(script_path), f"update_memory.py not found at {script_path}"
+E       AssertionError: update_memory.py not found at /home/user/project/update_memory.py
+E       assert False
+E        +  where False = <function isfile at 0x72fbc7318220>('/home/user/project/update_memory.py')
+E        +    where <function isfile at 0x72fbc7318220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:10: AssertionError
+____________________________ test_mem0_final_state _____________________________
+
+    def test_mem0_final_state():
+        # We will write a small python script to check the memory state
+        # using the same config as setup.py
+        checker_script = os.path.join(PROJECT_DIR, "verify_state.py")
+        with open(checker_script, "w") as f:
+            f.write("""
+    import json
+    from mem0 import Memory
+    
+    config = {
+        "vector_store": {
+            "provider": "qdrant",
+            "config": {
+                "path": "/home/user/project/qdrant_db"
+            }
+        }
+    }
+    
+    def main():
+        m = Memory.from_config(config)
+        memories = m.get_all(user_id="charlie")
+        # memories is typically a list of dicts, or a dict containing a list
+        # Let's extract the text of the memories
+        results = []
+        if isinstance(memories, list):
+            items = memories
+        elif isinstance(memories, dict) and "results" in memories:
+            items = memories["results"]
+        else:
+            items = memories
+    
+        for item in items:
+            if isinstance(item, dict) and "memory" in item:
+                results.append(item["memory"])
+            elif hasattr(item, "memory"):
+                results.append(item.memory)
+            else:
+                results.append(str(item))
+    
+        print(json.dumps(results))
+    
+    if __name__ == "__main__":
+        main()
+    """)
+    
+        result = subprocess.run(
+            ["python3", "verify_state.py"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, f"Failed to run verification script: {result.stderr}"
+E       AssertionError: Failed to run verification script: Traceback (most recent call last):
+E           File "/home/user/project/verify_state.py", line 3, in <module>
+E             from mem0 import Memory
+E         ModuleNotFoundError: No module named 'mem0'
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['python3', 'verify_state.py'], returncode=1, stdout='', stderr='Traceback (most recent call las...t/verify_state.py", line 3, in <module>\n    from mem0 import Memory\nModuleNotFoundError: No module named \'mem0\'\n').returncode
+
+tests/test_final_state.py:61: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_update_memory_script_exists - Assertio...
+FAILED tests/test_final_state.py::test_mem0_final_state - AssertionError: Fai...
+============================== 2 failed in 0.05s ===============================

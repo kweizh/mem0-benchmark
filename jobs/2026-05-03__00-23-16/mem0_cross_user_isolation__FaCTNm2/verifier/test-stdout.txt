@@ -1,0 +1,71 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 14ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py FFFF                                           [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_alice_memories_file_exists ________________________
+
+    def test_alice_memories_file_exists():
+        """Priority 3: Check if alice_memories.json exists."""
+>       assert os.path.isfile(ALICE_FILE), f"Expected file {ALICE_FILE} does not exist."
+E       AssertionError: Expected file /home/user/mem0_project/alice_memories.json does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x79395353c220>('/home/user/mem0_project/alice_memories.json')
+E        +    where <function isfile at 0x79395353c220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:11: AssertionError
+________________________ test_bob_memories_file_exists _________________________
+
+    def test_bob_memories_file_exists():
+        """Priority 3: Check if bob_memories.json exists."""
+>       assert os.path.isfile(BOB_FILE), f"Expected file {BOB_FILE} does not exist."
+E       AssertionError: Expected file /home/user/mem0_project/bob_memories.json does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x79395353c220>('/home/user/mem0_project/bob_memories.json')
+E        +    where <function isfile at 0x79395353c220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:15: AssertionError
+_________________________ test_alice_memories_content __________________________
+
+    def test_alice_memories_content():
+        """Priority 3: Verify Alice's memories contain peanut allergy but not vegetarianism."""
+>       with open(ALICE_FILE, "r") as f:
+             ^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/mem0_project/alice_memories.json'
+
+tests/test_final_state.py:19: FileNotFoundError
+__________________________ test_bob_memories_content ___________________________
+
+    def test_bob_memories_content():
+        """Priority 3: Verify Bob's memories contain vegetarianism but not peanut allergy."""
+>       with open(BOB_FILE, "r") as f:
+             ^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/mem0_project/bob_memories.json'
+
+tests/test_final_state.py:33: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_alice_memories_file_exists - Assertion...
+FAILED tests/test_final_state.py::test_bob_memories_file_exists - AssertionEr...
+FAILED tests/test_final_state.py::test_alice_memories_content - FileNotFoundE...
+FAILED tests/test_final_state.py::test_bob_memories_content - FileNotFoundErr...
+============================== 4 failed in 0.03s ===============================

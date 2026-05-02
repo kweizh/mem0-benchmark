@@ -1,0 +1,68 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 0,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739220.137711,
+            "stop": 1777739220.172774
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_qdrant_db_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006702379323542118,
+                "start": 1777739220.1504724,
+                "stop": 1777739220.1648781,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_qdrant_db_exists():\n>       assert os.path.isdir(QDRANT_DB_DIR), f\"Qdrant DB directory {QDRANT_DB_DIR} does not exist.\"\nE       AssertionError: Qdrant DB directory /home/user/qdrant_db does not exist.\nE       assert False\nE        +  where False = <function isdir at 0x79ed220e82c0>('/home/user/qdrant_db')\nE        +    where <function isdir at 0x79ed220e82c0> = <module 'posixpath' (frozen)>.isdir\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:10: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_profile_json_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005198630969971418,
+                "start": 1777739220.1650894,
+                "stop": 1777739220.167369,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_profile_json_exists():\n>       assert os.path.isfile(PROFILE_JSON), f\"Profile JSON {PROFILE_JSON} does not exist.\"\nE       AssertionError: Profile JSON /home/user/bob_profile.json does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x79ed220e8220>('/home/user/bob_profile.json')\nE        +    where <function isfile at 0x79ed220e8220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_profile_json_contents",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0004617818631231785,
+                "start": 1777739220.1675766,
+                "stop": 1777739220.1702504,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_profile_json_contents():\n>       with open(PROFILE_JSON, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/bob_profile.json'\n\ntests/test_final_state.py:16: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_final_state.py::test_mem0_api_verify_memories",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005829292349517345,
+                "start": 1777739220.1704326,
+                "stop": 1777739220.1726184,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_mem0_api_verify_memories():\n>       from mem0 import Memory\nE       ModuleNotFoundError: No module named 'mem0'\n\ntests/test_final_state.py:30: ModuleNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

@@ -1,0 +1,90 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_custom_llm_openai_model__YTPCihg > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Custom LLM Model
+
+## Background
+Mem0 manages long-term memory for LLMs. By default, it uses OpenAI's `gpt-4o` model for its internal operations (like entity extraction and summarization) when the OpenAI provider is used. You can override this to use a different model, such as `gpt-4o-mini`, for cost efficiency.
+
+## Requirements
+- Create a Python script `main.py` in `/home/user/mem0_project`.
+- The script must initialize a `Memory` instance using a configuration dictionary.
+- The configuration must set the LLM provider to `openai` and the model to `gpt-4o-mini`.
+- To ensure the data is persisted locally and can be verified, configure the vector store provider to `qdrant` with the path `/home/user/mem0_project/qdrant_db`.
+- Add the memory string `"I am learning how to build AI agents."` for the user `alice`.
+- Execute the script so the memory is actually processed and stored.
+
+## Implementation Guide
+1. Ensure you are in `/home/user/mem0_project`.
+2. Write `main.py` with the required `config` dictionary and `Memory.from_config(config)`.
+3. Call `memory.add("I am learning how to build AI agents.", user_id="alice")`.
+4. Run `python3 main.py`.
+
+## Constraints
+- Project path: `/home/user/mem0_project`
+- The environment variable `OPENAI_API_KEY` is already set.
+- You must use `gpt-4o-mini` as the LLM model.
+
+## Integrations
+- OpenAI
+EOF
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

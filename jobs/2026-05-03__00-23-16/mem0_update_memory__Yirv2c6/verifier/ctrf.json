@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739360.0010886,
+            "stop": 1777739360.0302868
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007263021543622017,
+                "start": 1777739360.0103276,
+                "stop": 1777739360.0252664,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_exists():\n>       assert os.path.isfile(SCRIPT_FILE), f\"Script file {SCRIPT_FILE} does not exist.\"\nE       AssertionError: Script file /home/user/mem0_project/process_memories.py does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x749cd3844220>('/home/user/mem0_project/process_memories.py')\nE        +    where <function isfile at 0x749cd3844220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:9: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_final_memories",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.001436813035979867,
+                "start": 1777739360.025511,
+                "stop": 1777739360.0300696,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_final_memories():\n        sys.path.insert(0, PROJECT_DIR)\n    \n        try:\n            from config import MEM0_CONFIG\n>           from mem0 import Memory\nE           ModuleNotFoundError: No module named 'mem0'\n\ntests/test_final_state.py:16: ModuleNotFoundError\n\nDuring handling of the above exception, another exception occurred:\n\n    def test_final_memories():\n        sys.path.insert(0, PROJECT_DIR)\n    \n        try:\n            from config import MEM0_CONFIG\n            from mem0 import Memory\n        except ImportError as e:\n>           pytest.fail(f\"Failed to import required modules: {e}\")\nE           Failed: Failed to import required modules: No module named 'mem0'\n\ntests/test_final_state.py:18: Failed",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

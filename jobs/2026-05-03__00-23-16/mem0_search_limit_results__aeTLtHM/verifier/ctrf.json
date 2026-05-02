@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739360.0010927,
+            "stop": 1777739360.0295556
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006957412697374821,
+                "start": 1777739360.0100317,
+                "stop": 1777739360.0245974,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_file_exists():\n        \"\"\"Priority 3 fallback: basic file existence check.\"\"\"\n>       assert os.path.isfile(RESULTS_FILE), f\"Results file not found at {RESULTS_FILE}\"\nE       AssertionError: Results file not found at /home/user/project/results.json\nE       assert False\nE        +  where False = <function isfile at 0x711775b10220>('/home/user/project/results.json')\nE        +    where <function isfile at 0x711775b10220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:9: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_results_length_is_two",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005992837250232697,
+                "start": 1777739360.0248253,
+                "stop": 1777739360.0273054,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_length_is_two():\n        \"\"\"Priority 3 fallback: parse JSON output to verify length.\"\"\"\n>       with open(RESULTS_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/project/results.json'\n\ntests/test_final_state.py:13: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_final_state.py::test_results_contain_tennis",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0004410382825881243,
+                "start": 1777739360.0275102,
+                "stop": 1777739360.0293884,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_contain_tennis():\n        \"\"\"Priority 3 fallback: parse JSON output to verify content.\"\"\"\n>       with open(RESULTS_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/project/results.json'\n\ntests/test_final_state.py:24: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

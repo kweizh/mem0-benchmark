@@ -1,0 +1,63 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 555ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py FF                                             [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_script_exists ______________________________
+
+    def test_script_exists():
+>       assert os.path.isfile(SCRIPT_FILE), f"Script file {SCRIPT_FILE} does not exist."
+E       AssertionError: Script file /home/user/mem0_project/process_memories.py does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x749cd3844220>('/home/user/mem0_project/process_memories.py')
+E        +    where <function isfile at 0x749cd3844220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:9: AssertionError
+_____________________________ test_final_memories ______________________________
+
+    def test_final_memories():
+        sys.path.insert(0, PROJECT_DIR)
+    
+        try:
+            from config import MEM0_CONFIG
+>           from mem0 import Memory
+E           ModuleNotFoundError: No module named 'mem0'
+
+tests/test_final_state.py:16: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_final_memories():
+        sys.path.insert(0, PROJECT_DIR)
+    
+        try:
+            from config import MEM0_CONFIG
+            from mem0 import Memory
+        except ImportError as e:
+>           pytest.fail(f"Failed to import required modules: {e}")
+E           Failed: Failed to import required modules: No module named 'mem0'
+
+tests/test_final_state.py:18: Failed
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_script_exists - AssertionError: Script...
+FAILED tests/test_final_state.py::test_final_memories - Failed: Failed to imp...
+============================== 2 failed in 0.03s ===============================

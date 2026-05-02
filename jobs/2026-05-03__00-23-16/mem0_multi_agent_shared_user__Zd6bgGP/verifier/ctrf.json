@@ -1,0 +1,40 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739332.427864,
+            "stop": 1777739332.4675417
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_coach_results",
+                "status": "failed",
+                "duration": 0.000657317228615284,
+                "start": 1777739332.4456732,
+                "stop": 1777739332.4638863,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def run_script():\n        script_path = os.path.join(PROJECT_DIR, \"multi_agent.py\")\n>       assert os.path.isfile(script_path), f\"Script {script_path} does not exist.\"\nE       AssertionError: Script /home/user/mem0-project/multi_agent.py does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x71fda0998220>('/home/user/mem0-project/multi_agent.py')\nE        +    where <function isfile at 0x71fda0998220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError"
+            },
+            {
+                "name": "test_final_state.py::test_nutribot_results",
+                "status": "failed",
+                "duration": 0.0004548372235149145,
+                "start": 1777739332.4641957,
+                "stop": 1777739332.4673276,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def run_script():\n        script_path = os.path.join(PROJECT_DIR, \"multi_agent.py\")\n>       assert os.path.isfile(script_path), f\"Script {script_path} does not exist.\"\nE       AssertionError: Script /home/user/mem0-project/multi_agent.py does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x71fda0998220>('/home/user/mem0-project/multi_agent.py')\nE        +    where <function isfile at 0x71fda0998220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError"
+            }
+        ]
+    }
+}

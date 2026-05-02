@@ -1,0 +1,66 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 37ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py FFFF                                           [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_qdrant_db_exists _____________________________
+
+    def test_qdrant_db_exists():
+>       assert os.path.isdir(QDRANT_DB_DIR), f"Qdrant DB directory {QDRANT_DB_DIR} does not exist."
+E       AssertionError: Qdrant DB directory /home/user/qdrant_db does not exist.
+E       assert False
+E        +  where False = <function isdir at 0x79ed220e82c0>('/home/user/qdrant_db')
+E        +    where <function isdir at 0x79ed220e82c0> = <module 'posixpath' (frozen)>.isdir
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:10: AssertionError
+___________________________ test_profile_json_exists ___________________________
+
+    def test_profile_json_exists():
+>       assert os.path.isfile(PROFILE_JSON), f"Profile JSON {PROFILE_JSON} does not exist."
+E       AssertionError: Profile JSON /home/user/bob_profile.json does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x79ed220e8220>('/home/user/bob_profile.json')
+E        +    where <function isfile at 0x79ed220e8220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:13: AssertionError
+__________________________ test_profile_json_contents __________________________
+
+    def test_profile_json_contents():
+>       with open(PROFILE_JSON, "r") as f:
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/bob_profile.json'
+
+tests/test_final_state.py:16: FileNotFoundError
+________________________ test_mem0_api_verify_memories _________________________
+
+    def test_mem0_api_verify_memories():
+>       from mem0 import Memory
+E       ModuleNotFoundError: No module named 'mem0'
+
+tests/test_final_state.py:30: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_qdrant_db_exists - AssertionError: Qdr...
+FAILED tests/test_final_state.py::test_profile_json_exists - AssertionError: ...
+FAILED tests/test_final_state.py::test_profile_json_contents - FileNotFoundEr...
+FAILED tests/test_final_state.py::test_mem0_api_verify_memories - ModuleNotFo...
+============================== 4 failed in 0.04s ===============================

@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739191.4904864,
+            "stop": 1777739191.5394118
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_alice_memories_deleted_and_bob_intact",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.024772455682978034,
+                "start": 1777739191.4986355,
+                "stop": 1777739191.5391722,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_alice_memories_deleted_and_bob_intact():\n        script = \"\"\"\n    import sys\n    import json\n    from mem0 import Memory\n    \n    try:\n        m = Memory()\n        alice_memories = m.get_all(user_id=\"alice\")\n        bob_memories = m.get_all(user_id=\"bob\")\n    \n        # get_all might return a list or a dict with 'results'\n        if isinstance(alice_memories, dict) and \"results\" in alice_memories:\n            alice_count = len(alice_memories[\"results\"])\n        else:\n            alice_count = len(alice_memories) if alice_memories else 0\n    \n        if isinstance(bob_memories, dict) and \"results\" in bob_memories:\n            bob_count = len(bob_memories[\"results\"])\n        else:\n            bob_count = len(bob_memories) if bob_memories else 0\n    \n        print(json.dumps({\"alice_count\": alice_count, \"bob_count\": bob_count}))\n    except Exception as e:\n        print(json.dumps({\"error\": str(e)}))\n        sys.exit(1)\n    \"\"\"\n        script_path = \"/tmp/verify_memories.py\"\n        with open(script_path, \"w\") as f:\n            f.write(script)\n    \n        result = subprocess.run([\"python3\", script_path], capture_output=True, text=True)\n>       assert result.returncode == 0, f\"Failed to run verification script. stderr: {result.stderr}\\nstdout: {result.stdout}\"\nE       AssertionError: Failed to run verification script. stderr: Traceback (most recent call last):\nE           File \"/tmp/verify_memories.py\", line 4, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE         stdout: \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', '/tmp/verify_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent ...erify_memories.py\", line 4, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:38: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

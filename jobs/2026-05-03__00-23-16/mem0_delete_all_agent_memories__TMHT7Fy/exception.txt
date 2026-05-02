@@ -1,0 +1,63 @@
+Traceback (most recent call last):
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py", line 538, in run
+    await self._execute_agent()
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py", line 285, in _execute_agent
+    await asyncio.wait_for(
+  File "/opt/miniconda3/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py", line 41, in wrapper
+    return await fn(self, instruction, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kw/code/zealt/pochi-harbor/agents/pochi.py", line 209, in run
+    await self.exec_as_agent(
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py", line 358, in exec_as_agent
+    return await self._exec(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py", line 321, in _exec
+    raise NonZeroAgentExitCodeError(
+harbor.agents.installed.base.NonZeroAgentExitCodeError: Command failed (exit 1): export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Delete All Memories for a Specific Agent in Mem0
+
+## Background
+Mem0 is a memory layer for AI agents. Memories can be scoped to specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. In a multi-agent system, you might want to clear all memories associated with a specific agent without affecting other agents or users.
+
+## Requirements
+- Initialize a Mem0 Open Source `Memory` instance using the default configuration (which uses Qdrant and OpenAI by default, or just the default in-memory/local setup if no config is provided, but we will provide a basic config).
+- Add a few memories for `agent_id="travel-agent"`.
+- Add a few memories for `agent_id="support-agent"`.
+- Delete all memories associated with `agent_id="travel-agent"`.
+- Verify that memories for `agent_id="travel-agent"` are deleted, while memories for `agent_id="support-agent"` remain intact.
+- Save the count of remaining memories for `agent_id="support-agent"` to a log file.
+
+## Implementation Guide
+1. Create a Python script `/home/user/mem0-project/delete_memories.py`.
+2. Initialize `from mem0 import Memory` and `memory = Memory()`.
+3. Add memories: 
+   - `memory.add("I like window seats", agent_id="travel-agent")`
+   - `memory.add("User prefers email support", agent_id="support-agent")`
+4. Delete all memories for the travel agent: `memory.delete_all(agent_id="travel-agent")`.
+5. Get all memories for the support agent: `support_mems = memory.get_all(agent_id="support-agent")`.
+6. Write the number of remaining support agent memories to `/home/user/mem0-project/output.log`.
+
+## Constraints
+- Project path: `/home/user/mem0-project`
+- Log file: `/home/user/mem0-project/output.log`
+- Use Mem0 Open Source version.
+
+## Integrations
+- OpenAI (for default embedding/LLM in Mem0)
+EOF
+stdout: [37m2026-05-02 16:26:11.815[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:1[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	pochi v0.6.8
+[37m2026-05-02 16:26:12.326[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519633[39m[0m[0m[1m[37m	loadAgents[39m[22m[0m[0m	Loaded 6 custom agents (6 valid, 0 invalid)
+[37m2026-05-02 16:26:12.327[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519634[39m[0m[0m[1m[37m	loadSkills[39m[22m[0m[0m	Loaded 2 skills (2 valid, 0 invalid)
+[37m2026-05-02 16:26:12.391[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:444677[39m[0m[0m[1m[37m	PochiVendor[39m[22m[0m[0m	JWT is expiring or missing, fetching a new one
+[37m2026-05-02 16:26:13.287[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:416517[39m[0m[0m[1m[37m	MCPHub[39m[22m[0m[0m	MCP servers configuration changed via signal:
+[37m2026-05-02 16:26:13.288[39m[0m[0m	[32m[1mDEBUG ... [truncated]
+stderr: None

@@ -1,0 +1,71 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 509ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 1 item
+
+tests/test_final_state.py F                                              [100%]
+
+=================================== FAILURES ===================================
+__________________ test_alice_memories_deleted_and_bob_intact __________________
+
+    def test_alice_memories_deleted_and_bob_intact():
+        script = """
+    import sys
+    import json
+    from mem0 import Memory
+    
+    try:
+        m = Memory()
+        alice_memories = m.get_all(user_id="alice")
+        bob_memories = m.get_all(user_id="bob")
+    
+        # get_all might return a list or a dict with 'results'
+        if isinstance(alice_memories, dict) and "results" in alice_memories:
+            alice_count = len(alice_memories["results"])
+        else:
+            alice_count = len(alice_memories) if alice_memories else 0
+    
+        if isinstance(bob_memories, dict) and "results" in bob_memories:
+            bob_count = len(bob_memories["results"])
+        else:
+            bob_count = len(bob_memories) if bob_memories else 0
+    
+        print(json.dumps({"alice_count": alice_count, "bob_count": bob_count}))
+    except Exception as e:
+        print(json.dumps({"error": str(e)}))
+        sys.exit(1)
+    """
+        script_path = "/tmp/verify_memories.py"
+        with open(script_path, "w") as f:
+            f.write(script)
+    
+        result = subprocess.run(["python3", script_path], capture_output=True, text=True)
+>       assert result.returncode == 0, f"Failed to run verification script. stderr: {result.stderr}\nstdout: {result.stdout}"
+E       AssertionError: Failed to run verification script. stderr: Traceback (most recent call last):
+E           File "/tmp/verify_memories.py", line 4, in <module>
+E             from mem0 import Memory
+E         ModuleNotFoundError: No module named 'mem0'
+E         
+E         stdout: 
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['python3', '/tmp/verify_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent ...erify_memories.py", line 4, in <module>\n    from mem0 import Memory\nModuleNotFoundError: No module named \'mem0\'\n').returncode
+
+tests/test_final_state.py:38: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_alice_memories_deleted_and_bob_intact
+============================== 1 failed in 0.05s ===============================

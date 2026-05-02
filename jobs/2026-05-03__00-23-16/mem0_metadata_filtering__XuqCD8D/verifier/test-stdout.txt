@@ -1,0 +1,53 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 147ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py EE                                             [100%]
+
+==================================== ERRORS ====================================
+__________________ ERROR at setup of test_output_file_exists ___________________
+
+    @pytest.fixture(scope="module", autouse=True)
+    def run_script():
+        """Run the user's script to generate the output."""
+>       assert os.path.isfile(SCRIPT_FILE), f"Script {SCRIPT_FILE} does not exist."
+E       AssertionError: Script /home/user/myproject/run.py does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x7d7c3adb4220>('/home/user/myproject/run.py')
+E        +    where <function isfile at 0x7d7c3adb4220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:13: AssertionError
+___________ ERROR at setup of test_output_contains_correct_memories ____________
+
+    @pytest.fixture(scope="module", autouse=True)
+    def run_script():
+        """Run the user's script to generate the output."""
+>       assert os.path.isfile(SCRIPT_FILE), f"Script {SCRIPT_FILE} does not exist."
+E       AssertionError: Script /home/user/myproject/run.py does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x7d7c3adb4220>('/home/user/myproject/run.py')
+E        +    where <function isfile at 0x7d7c3adb4220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:13: AssertionError
+=========================== short test summary info ============================
+ERROR tests/test_final_state.py::test_output_file_exists - AssertionError: Sc...
+ERROR tests/test_final_state.py::test_output_contains_correct_memories - Asse...
+============================== 2 errors in 0.03s ===============================

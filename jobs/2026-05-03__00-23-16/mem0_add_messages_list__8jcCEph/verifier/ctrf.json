@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739067.4729843,
+            "stop": 1777739067.4995506
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006806871388107538,
+                "start": 1777739067.4819524,
+                "stop": 1777739067.4965975,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_exists():\n>       assert os.path.isfile(SCRIPT_FILE), f\"Script file not found at {SCRIPT_FILE}\"\nE       AssertionError: Script file not found at /home/user/mem0-project/add_messages.py\nE       assert False\nE        +  where False = <function isfile at 0x7d79032cc220>('/home/user/mem0-project/add_messages.py')\nE        +    where <function isfile at 0x7d79032cc220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:10: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_output_file_exists_and_contains_vegetarian_fact",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006422961596399546,
+                "start": 1777739067.4968057,
+                "stop": 1777739067.4993799,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_exists_and_contains_vegetarian_fact():\n>       assert os.path.isfile(OUTPUT_FILE), f\"Output file not found at {OUTPUT_FILE}\"\nE       AssertionError: Output file not found at /home/user/mem0-project/output.json\nE       assert False\nE        +  where False = <function isfile at 0x7d79032cc220>('/home/user/mem0-project/output.json')\nE        +    where <function isfile at 0x7d79032cc220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

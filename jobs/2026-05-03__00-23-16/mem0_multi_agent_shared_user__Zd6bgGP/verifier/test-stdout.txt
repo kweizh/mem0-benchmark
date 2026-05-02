@@ -1,0 +1,53 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 378ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py EE                                             [100%]
+
+==================================== ERRORS ====================================
+_____________________ ERROR at setup of test_coach_results _____________________
+
+    @pytest.fixture(scope="module", autouse=True)
+    def run_script():
+        script_path = os.path.join(PROJECT_DIR, "multi_agent.py")
+>       assert os.path.isfile(script_path), f"Script {script_path} does not exist."
+E       AssertionError: Script /home/user/mem0-project/multi_agent.py does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x71fda0998220>('/home/user/mem0-project/multi_agent.py')
+E        +    where <function isfile at 0x71fda0998220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:13: AssertionError
+___________________ ERROR at setup of test_nutribot_results ____________________
+
+    @pytest.fixture(scope="module", autouse=True)
+    def run_script():
+        script_path = os.path.join(PROJECT_DIR, "multi_agent.py")
+>       assert os.path.isfile(script_path), f"Script {script_path} does not exist."
+E       AssertionError: Script /home/user/mem0-project/multi_agent.py does not exist.
+E       assert False
+E        +  where False = <function isfile at 0x71fda0998220>('/home/user/mem0-project/multi_agent.py')
+E        +    where <function isfile at 0x71fda0998220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:13: AssertionError
+=========================== short test summary info ============================
+ERROR tests/test_final_state.py::test_coach_results - AssertionError: Script ...
+ERROR tests/test_final_state.py::test_nutribot_results - AssertionError: Scri...
+============================== 2 errors in 0.04s ===============================

@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739419.8134706,
+            "stop": 1777739419.8556068
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_scripts_run_successfully",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.014298721915110946,
+                "start": 1777739419.82377,
+                "stop": 1777739419.8526735,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_scripts_run_successfully():\n        \"\"\"Priority 1: Run the setup and search scripts to verify they work.\"\"\"\n        setup_result = subprocess.run(\n            [\"python3\", \"setup_memories.py\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert setup_result.returncode == 0, f\"setup_memories.py failed: {setup_result.stderr}\"\nE       AssertionError: setup_memories.py failed: Traceback (most recent call last):\nE           File \"/home/user/project/setup_memories.py\", line 2, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', 'setup_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent call l...setup_memories.py\", line 2, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:13: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_output_file_exists_and_contains_correct_memory",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005671230610460043,
+                "start": 1777739419.8529046,
+                "stop": 1777739419.8554387,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_output_file_exists_and_contains_correct_memory():\n        \"\"\"Priority 3: Verify the output file contains the correct filtered memory.\"\"\"\n        output_file = os.path.join(PROJECT_DIR, \"high_score_memories.txt\")\n>       assert os.path.isfile(output_file), f\"Output file {output_file} does not exist.\"\nE       AssertionError: Output file /home/user/project/high_score_memories.txt does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x790d406ac220>('/home/user/project/high_score_memories.txt')\nE        +    where <function isfile at 0x790d406ac220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:24: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

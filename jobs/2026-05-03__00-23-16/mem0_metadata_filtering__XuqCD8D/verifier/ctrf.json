@@ -1,0 +1,40 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777739202.1120434,
+            "stop": 1777739202.140551
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_output_file_exists",
+                "status": "failed",
+                "duration": 0.0005919886752963066,
+                "start": 1777739202.1215954,
+                "stop": 1777739202.1374147,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def run_script():\n        \"\"\"Run the user's script to generate the output.\"\"\"\n>       assert os.path.isfile(SCRIPT_FILE), f\"Script {SCRIPT_FILE} does not exist.\"\nE       AssertionError: Script /home/user/myproject/run.py does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x7d7c3adb4220>('/home/user/myproject/run.py')\nE        +    where <function isfile at 0x7d7c3adb4220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError"
+            },
+            {
+                "name": "test_final_state.py::test_output_contains_correct_memories",
+                "status": "failed",
+                "duration": 0.00031130784191191196,
+                "start": 1777739202.137643,
+                "stop": 1777739202.1403875,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def run_script():\n        \"\"\"Run the user's script to generate the output.\"\"\"\n>       assert os.path.isfile(SCRIPT_FILE), f\"Script {SCRIPT_FILE} does not exist.\"\nE       AssertionError: Script /home/user/myproject/run.py does not exist.\nE       assert False\nE        +  where False = <function isfile at 0x7d7c3adb4220>('/home/user/myproject/run.py')\nE        +    where <function isfile at 0x7d7c3adb4220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:13: AssertionError"
+            }
+        ]
+    }
+}

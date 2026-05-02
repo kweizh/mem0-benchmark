@@ -1,0 +1,1383 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_custom_llm_openai_model__YTPCihg > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Custom LLM Model
+
+## Background
+Mem0 manages long-term memory for LLMs. By default, it uses OpenAI's `gpt-4o` model for its internal operations (like entity extraction and summarization) when the OpenAI provider is used. You can override this to use a different model, such as `gpt-4o-mini`, for cost efficiency.
+
+## Requirements
+- Create a Python script `main.py` in `/home/user/mem0_project`.
+- The script must initialize a `Memory` instance using a configuration dictionary.
+- The configuration must set the LLM provider to `openai` and the model to `gpt-4o-mini`.
+- To ensure the data is persisted locally and can be verified, configure the vector store provider to `qdrant` with the path `/home/user/mem0_project/qdrant_db`.
+- Add the memory string `"I am learning how to build AI agents."` for the user `alice`.
+- Execute the script so the memory is actually processed and stored.
+
+## Implementation Guide
+1. Ensure you are in `/home/user/mem0_project`.
+2. Write `main.py` with the required `config` dictionary and `Memory.from_config(config)`.
+3. Call `memory.add("I am learning how to build AI agents.", user_id="alice")`.
+4. Run `python3 main.py`.
+
+## Constraints
+- Project path: `/home/user/mem0_project`
+- The environment variable `OPENAI_API_KEY` is already set.
+- You must use `gpt-4o-mini` as the LLM model.
+
+## Integrations
+- OpenAI
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Running command: echo mem0_delete_specific_memory__33YLgWz > /logs/artifacts/trial_id
+Command outputs captured
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Delete Specific Memory
+
+## Background
+Mem0 manages long-term memory for AI agents. In this task, you will use Mem0 Open Source to search for a specific memory, delete it by its ID, and add an updated memory.
+
+## Requirements
+- You have a project at `/home/user/project` with a script `setup.py` that populates Mem0 with initial memories for `user_id="charlie"`.
+- Run `python3 setup.py` to initialize the memories.
+- Create a script `update_memory.py` that:
+  1. Initializes the Mem0 `Memory` client. **Important**: Use the same configuration dictionary found in `setup.py` to ensure you connect to the same local Qdrant database.
+  2. Searches for the memory related to "allergic to strawberries" for `user_id="charlie"`.
+  3. Extracts the `memory_id` from the search results.
+  4. Deletes that specific memory using its ID.
+  5. Adds a new memory: "Charlie is no longer allergic to strawberries" for `user_id="charlie"`.
+- Run your script `python3 update_memory.py`.
+
+## Constraints
+- Project path: `/home/user/project`
+- Use Mem0 OSS configuration as provided in `setup.py` (requires `OPENAI_API_KEY` environment variable).
+- Do not delete all memories for the user; only delete the specific one.
+
+## Integrations
+- OpenAI
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_cross_user_isolation__FaCTNm2 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Cross-User Isolation
+
+## Background
+Mem0 manages long-term memory for AI agents, allowing you to isolate context using `user_id`, `agent_id`, and other scopes. In this task, you will verify that memories are properly isolated between users.
+
+## Requirements
+1. Write a Python script at `/home/user/mem0_project/script.py`.
+2. Initialize a Mem0 `Memory` instance using the default Open Source configuration (which uses in-memory Qdrant and OpenAI).
+3. Add a memory for `user_id="alice"`: "I am highly allergic to peanuts."
+4. Add a memory for `user_id="bob"`: "I am a vegetarian."
+5. Perform a search query: "What are my dietary restrictions?" for `user_id="alice"` and save the resulting JSON array to `/home/user/mem0_project/alice_memories.json`.
+6. Perform the same search query for `user_id="bob"` and save the resulting JSON array to `/home/user/mem0_project/bob_memories.json`.
+
+## Constraints
+- Project path: `/home/user/mem0_project`
+- The script must be executable and successfully output the two JSON files.
+- Ensure you use the `OPENAI_API_KEY` environment variable for the default OpenAI embedder/LLM.
+
+## Integrations
+- OpenAI
+EOF
+Running command: echo mem0_add_messages_list__8jcCEph > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0: Add Messages List
+
+## Background
+Mem0 manages long-term memory for LLMs. It can extract facts from a list of conversational messages and store them in its memory store.
+
+## Requirements
+Write a Python script `add_messages.py` that uses the open-source Mem0 `Memory` client to process a conversation and store the extracted facts.
+
+1. Initialize the `Memory` client from `mem0` (it will use the default OpenAI models and in-memory Qdrant, so you don't need to pass a custom config, but `OPENAI_API_KEY` is required in the environment).
+2. Add the following list of messages for `user_id="alice"`:
+   - role: "user", content: "Hi, I'm Alice. I am planning a trip to Japan next month."
+   - role: "assistant", content: "That's exciting! Japan is beautiful."
+   - role: "user", content: "I am a vegetarian, so I need to find good food options."
+3. Search the memory for the query "food preferences" for `user_id="alice"`.
+4. Write the search results (the list of memory dictionaries) as a JSON string to `output.json`.
+
+## Constraints
+- Project path: `/home/user/mem0-project`
+- The script must be saved as `/home/user/mem0-project/add_messages.py`.
+- The output file must be saved as `/home/user/mem0-project/output.json`.
+- Run the script to generate the output.
+- Environment variable `OPENAI_API_KEY` is available in the environment.
+EOF
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_add_and_search_basic__77jWFUf > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Add and Search
+
+## Background
+Mem0 (formerly Embedchain's memory component) manages long-term memory for LLMs. It extracts facts from conversations, stores them in a vector structure, and retrieves relevant context for future interactions.
+
+## Requirements
+- Write a Python script that uses the open-source `mem0ai` library to store and retrieve memories.
+- Store two specific facts for a user.
+- Search for relevant context based on a query.
+- Save the search results to a JSON file.
+
+## Implementation Guide
+1. Navigate to `/home/user/mem0_project`.
+2. Create a Python script named `memory_ops.py`.
+3. In the script, initialize `Memory` from `mem0` using the default configuration.
+4. Use the `add` method to store the following facts for `user_id="alice"`:
+   - "I am allergic to peanuts."
+   - "I love hiking."
+5. Use the `search` method to query "What should I avoid eating?" for `user_id="alice"`.
+6. Save the search results to `/home/user/mem0_project/search_results.json` using the `json` module.
+
+## Constraints
+- Project path: `/home/user/mem0_project`
+- The script must be executable via `python3 memory_ops.py`.
+- Use the default OSS configuration, which requires `OPENAI_API_KEY` to be set in the environment.
+
+## Integrations
+- OpenAI
+EOF
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Running command: echo mem0_delete_all_user_memories__NZPVg8L > /logs/artifacts/trial_id
+Running command: echo mem0_complex_or_filtering__cDZMZJz > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Delete All Memories for a User
+
+## Background
+You are managing an AI companion application that uses `mem0ai` (Open Source version) to store user memories. A user named "alice" has requested to have all her data deleted from the system.
+
+## Requirements
+- Run the provided setup script to populate the database with initial memories.
+- Write a Python script that initializes the Mem0 `Memory` client (with default configuration).
+- The script must delete all memories associated with `user_id="alice"`.
+- Do not delete memories for other users (e.g., "bob").
+
+## Implementation Guide
+1. Run `python /home/user/setup_memories.py` to populate the initial memories for users 'alice' and 'bob'.
+2. Create a script at `/home/user/delete_alice_memories.py`.
+3. In the script, import `Memory` from `mem0` and initialize it: `m = Memory()`.
+4. Call the appropriate method to delete all memories for `user_id="alice"`.
+5. Run `python /home/user/delete_alice_memories.py` to perform the deletion.
+
+## Constraints
+- Project path: `/home/user`
+- Setup script: `/home/user/setup_memories.py`
+- Script path: `/home/user/delete_alice_memories.py`
+- The environment variable `OPENAI_API_KEY` is already set and must be used by Mem0 for its default OpenAI integration.
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Complex OR Filtering
+
+## Background
+Mem0 partitions memories by `user_id`, `agent_id`, `app_id`, and `run_id`. When building multi-agent systems, you often need to retrieve memories that belong to EITHER the user OR the agent. Using an AND logic for these IDs will return nothing because records are stored per-entity. You need to use an OR filter.
+
+## Requirements
+Write a Python script at `/home/user/app.py` that:
+1. Initializes the Mem0 OSS `Memory` client. (It will automatically use the default Qdrant in-memory store and OpenAI for embeddings/LLM using the `OPENAI_API_KEY` from the environment).
+2. Adds a memory: "Alice has a knee injury" for `user_id="alice"`.
+3. Adds a memory: "The coach recommends swimming for recovery" for `agent_id="coach"`.
+4. Searches for the query "recovery" across BOTH `user_id="alice"` AND `agent_id="coach"` using a compound `$or` filter in the `filters` argument. Do not pass `user_id` or `agent_id` as direct keyword arguments to the `search` method.
+5. Saves the search results (a list of dictionaries) to `/home/user/results.json` using the standard `json` module.
+
+## Constraints
+- Project path: `/home/user`
+- Script path: `/home/user/app.py`
+- Output file: `/home/user/results.json`
+
+## Integrations
+- OpenAI
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_delete_all_agent_memories__TMHT7Fy > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Delete All Memories for a Specific Agent in Mem0
+
+## Background
+Mem0 is a memory layer for AI agents. Memories can be scoped to specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. In a multi-agent system, you might want to clear all memories associated with a specific agent without affecting other agents or users.
+
+## Requirements
+- Initialize a Mem0 Open Source `Memory` instance using the default configuration (which uses Qdrant and OpenAI by default, or just the default in-memory/local setup if no config is provided, but we will provide a basic config).
+- Add a few memories for `agent_id="travel-agent"`.
+- Add a few memories for `agent_id="support-agent"`.
+- Delete all memories associated with `agent_id="travel-agent"`.
+- Verify that memories for `agent_id="travel-agent"` are deleted, while memories for `agent_id="support-agent"` remain intact.
+- Save the count of remaining memories for `agent_id="support-agent"` to a log file.
+
+## Implementation Guide
+1. Create a Python script `/home/user/mem0-project/delete_memories.py`.
+2. Initialize `from mem0 import Memory` and `memory = Memory()`.
+3. Add memories: 
+   - `memory.add("I like window seats", agent_id="travel-agent")`
+   - `memory.add("User prefers email support", agent_id="support-agent")`
+4. Delete all memories for the travel agent: `memory.delete_all(agent_id="travel-agent")`.
+5. Get all memories for the support agent: `support_mems = memory.get_all(agent_id="support-agent")`.
+6. Write the number of remaining support agent memories to `/home/user/mem0-project/output.log`.
+
+## Constraints
+- Project path: `/home/user/mem0-project`
+- Log file: `/home/user/mem0-project/output.log`
+- Use Mem0 Open Source version.
+
+## Integrations
+- OpenAI (for default embedding/LLM in Mem0)
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_metadata_filtering__XuqCD8D > /logs/artifacts/trial_id
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Metadata Filtering
+
+## Background
+Mem0 is a memory layer for AI agents. Memories are partitioned by specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. When retrieving memories that belong to different entities, you must use proper logical filters (like `OR`) because records are stored per-entity.
+
+## Requirements
+Write a Python script that uses Mem0 Open Source to:
+1. Initialize a Mem0 `Memory` instance using default configurations (which uses OpenAI and an in-memory vector store). Ensure you have `OPENAI_API_KEY` set in the environment.
+2. Add the following memory for `user_id="alice"`: "I am currently training for a marathon."
+3. Add the following memory for `agent_id="coach"`: "Always remind the user to stretch before running."
+4. Perform a search query for "running" that retrieves memories from BOTH `user_id="alice"` AND `agent_id="coach"` using a single `search` call with a compound `OR` filter.
+5. Save the search results (a list of memory dictionaries) to `/home/user/myproject/output.json`.
+
+## Implementation Guide
+1. Navigate to the existing project directory at `/home/user/myproject`.
+2. Write a Python script `run.py` that implements the requirements.
+3. Use `os.environ.get("OPENAI_API_KEY")` to ensure the OpenAI API key is available.
+4. Use the `filters` parameter in the `search` method to apply an `OR` condition for `user_id` and `agent_id`.
+5. Run the script to generate `output.json`.
+
+## Constraints
+- Project path: `/home/user/myproject`
+- Log file: `/home/user/myproject/output.json`
+
+## Integrations
+- OpenAI
+EOF
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_history_extraction__dZxhraf > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 History Extraction
+
+## Background
+You need to process a user's chat history using the Mem0 open-source library to extract long-term memories and build a user profile.
+
+## Requirements
+1. Read chat logs from `/home/user/chat_logs/session1.json` and `/home/user/chat_logs/session2.json`. The files contain lists of message dictionaries (e.g., `[{"role": "user", "content": "..."}, ...]`).
+2. Initialize a Mem0 `Memory` client. To ensure memories are saved to disk, configure it to use Qdrant with a local path:
+   ```python
+   config = {
+       "vector_store": {
+           "provider": "qdrant",
+           "config": {
+               "path": "/home/user/qdrant_db"
+           }
+       }
+   }
+   ```
+3. Add all messages from the chat logs to the memory under `user_id="bob"`.
+4. Search the memory for the query "What are Bob's hobbies?" for `user_id="bob"`.
+5. Search the memory for the query "What is Bob's profession?" for `user_id="bob"`.
+6. Retrieve all memories for `user_id="bob"`.
+7. Save the results to `/home/user/bob_profile.json`. The JSON file should have the following structure:
+   ```json
+   {
+     "hobbies": ["<memory_text_1>", "<memory_text_2>"],
+     "profession": ["<memory_text>"],
+     "all_memories": ["<all_memory_texts>"]
+   }
+   ```
+   (Extract just the `memory` string from the returned dictionaries for the lists).
+8. Write the script to `/home/user/process.py` and execute it.
+
+## Constraints
+- Project path: `/home/user`
+- The `OPENAI_API_KEY` environment variable is already set.
+
+## Integrations
+- OpenAI
+EOF
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Not retrying trial because the maximum number of retries has been reached
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_multi_agent_shared_user__Zd6bgGP > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Multi-Agent Shared User Context
+
+## Background
+In multi-agent systems, agents often share user context but maintain separate "Agent Memories" (e.g., personality, instructions). Mem0 isolates memories by entity IDs (`user_id`, `agent_id`, etc.). To retrieve both a user's memory and a specific agent's memory for a prompt, you must query for both correctly.
+
+## Requirements
+Write a Python script `/home/user/mem0-project/multi_agent.py` that does the following:
+1. Initializes a Mem0 `Memory` instance using the open-source configuration (default providers are fine).
+2. Adds the following memories:
+   - User memory (`user_id="alice"`): "I am a vegetarian and allergic to nuts."
+   - Agent memory (`agent_id="coach"`): "You are a fitness coach. Always encourage the user to push their limits."
+   - Agent memory (`agent_id="nutribot"`): "You are a nutritionist. Recommend high-protein plant-based meals."
+3. Performs a search for the query "Suggest a dinner plan" for the "Coach" interacting with "alice". You must retrieve BOTH Alice's user memory and the Coach's agent memory. Save the list of retrieved memory texts (just the string values) to `/home/user/mem0-project/coach_results.json`.
+4. Performs a search for the query "Suggest a dinner plan" for the "NutriBot" interacting with "alice". You must retrieve BOTH Alice's user memory and the NutriBot's agent memory. Save the list of retrieved memory texts to `/home/user/mem0-project/nutribot_results.json`.
+
+## Constraints
+- Project path: `/home/user/mem0-project`
+- The script must be self-contained and runnable via `python3 multi_agent.py`.
+- You must use `OPENAI_API_KEY` from the environment for Mem0's default LLM/Embedder.
+
+## Integrations
+- OpenAI
+EOF
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_update_nonexistent_memory__HSsEVkK > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Update Nonexistent Memory in Mem0
+
+## Background
+Mem0 provides an `update(memory_id, data)` method to modify existing memories. You need to write a script to test how Mem0 OSS handles an update request for a memory ID that does not exist.
+
+## Requirements
+- Write a Python script at `/home/user/test_update.py`.
+- Initialize a Mem0 open-source `Memory` instance with default configuration.
+- Attempt to update a memory with the ID `nonexistent_memory_id_999` using the data `"I like green apples"`.
+- Catch any exception that is raised during the update attempt, or capture the return value if no exception is raised.
+- Write the string representation of the exception (or the return value) to `/home/user/output.txt`.
+
+## Implementation Guide
+1. Create `/home/user/test_update.py`.
+2. Import `Memory` from `mem0` and initialize it.
+3. Call `update("nonexistent_memory_id_999", data="I like green apples")`.
+4. Write the result or exception to `/home/user/output.txt`.
+5. Run the script.
+
+## Constraints
+- Project path: `/home/user`
+- Log file: `/home/user/output.txt`
+EOF
+Command outputs captured
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo mem0_update_memory__Yirv2c6 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Update and Manage Mem0 Memories
+
+## Background
+You are working on a Python project that uses the `mem0ai` library to manage long-term memory for an AI agent. The project is located at `/home/user/mem0_project`.
+
+## Requirements
+You need to write a script `process_memories.py` in `/home/user/mem0_project` that performs the following memory management tasks sequentially using the `mem0` library:
+1. Initialize the `Memory` instance using the configuration provided in `config.py`.
+2. Add the following initial memories for `user_id="bob"`:
+   - `"Bob is allergic to peanuts"`
+   - `"Bob hates Monday mornings"`
+   - `"Bob works as a software engineer"`
+3. Search for the memory containing the fact about Bob's peanut allergy.
+4. Update that specific memory to say `"Bob is allergic to peanuts and shellfish"` using the `update(memory_id, data="...")` method.
+5. Search for the memory containing the fact that Bob hates Monday mornings.
+6. Delete that specific memory using the `delete(memory_id)` method.
+7. Add a new memory `"Bob loves to play tennis"` for `user_id="bob"`.
+
+## Implementation Guide
+1. Import the configuration from `config.py`: `from config import MEM0_CONFIG`.
+2. Initialize the memory: `from mem0 import Memory; m = Memory.from_config(MEM0_CONFIG)`.
+3. Add the initial memories using `m.add(..., user_id="bob")`.
+4. Use `m.search(query="...", user_id="bob")` to find the relevant memory IDs.
+5. Use `m.update(memory_id=..., data="Bob is allergic to peanuts and shellfish")` to update the allergy memory.
+6. Use `m.delete(memory_id=...)` to remove the Monday mornings memory.
+7. Use `m.add("Bob loves to play tennis", user_id="bob")` to add the new memory.
+8. Run your script: `python3 process_memories.py`.
+
+## Constraints
+- Project path: `/home/user/mem0_project`
+- Configuration file: `/home/user/mem0_project/config.py`
+- You must use the existing `MEM0_CONFIG` to ensure the local database is correctly accessed.
+
+## Integrations
+- OpenAI
+EOF
+Running command: echo mem0_search_limit_results__aeTLtHM > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Search with Limit
+
+## Background
+Mem0 manages long-term memory for AI agents. When retrieving context, you often want to limit the number of results returned to fit within an LLM's context window.
+
+## Requirements
+- Write a Python script `/home/user/project/search.py`.
+- Initialize a Mem0 `Memory` instance (Open Source version).
+- Add the following 4 facts for `user_id="alice"`:
+  1. "Alice loves to play tennis."
+  2. "Alice is allergic to peanuts."
+  3. "Alice works as a software engineer."
+  4. "Alice has a dog named Max."
+- Search for the query "What sports does Alice play?" for `user_id="alice"`, but limit the search to return exactly 2 results.
+- Write the search results (a list of dictionaries) to `/home/user/project/results.json`.
+
+## Implementation Guide
+1. Use `from mem0 import Memory` and `m = Memory()` to initialize the default open-source memory.
+2. Use `m.add()` to add the facts.
+3. Use `m.search(query="...", user_id="alice", limit=2)` to search with a limit.
+4. Dump the results to `results.json` using the `json` module.
+5. Run the script to generate the output.
+
+## Constraints
+- Project path: /home/user/project
+- Use `OPENAI_API_KEY` from the environment.
+EOF
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Not retrying trial because the maximum number of retries has been reached
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Not retrying trial because the maximum number of retries has been reached
+Running command: echo mem0_search_score_threshold__5nVLWQj > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Not retrying trial because the maximum number of retries has been reached
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Preserving your work
+
+Save a copy of files you create during this task to `/logs/artifacts/`. This directory is preserved after the run so outputs can be inspected. Organize with subdirectories if helpful (e.g., `/logs/artifacts/code/`, `/logs/artifacts/reports/`). The directory already exists and is writable.
+
+---
+
+# Mem0 Search Score Threshold
+
+## Background
+You have a Python script `setup_memories.py` at `/home/user/project` that initializes a `Memory` instance using Mem0 Open Source and adds several memories for `user_id="bob"`. Your task is to write a script `search_mem0.py` that retrieves relevant memories and filters them based on a score threshold.
+
+## Requirements
+- Create a script `/home/user/project/search_mem0.py`.
+- Initialize `Memory` from `mem0` using the default configuration (which uses Qdrant and OpenAI).
+- Search for the query "What are my dietary restrictions?" for `user_id="bob"`.
+- Filter the search results, keeping only memories with a `score` strictly greater than `0.6`.
+- Write the `memory` text of the matched results to `/home/user/project/high_score_memories.txt`, one per line.
+
+## Constraints
+- Project path: `/home/user/project`
+- You must use `mem0ai`.
+
+## Integrations
+- OpenAI
+EOF
+Not retrying trial because the maximum number of retries has been reached
+Command failed
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Not retrying trial because the maximum number of retries has been reached
