@@ -1,0 +1,22 @@
+# Update Nonexistent Memory in Mem0
+
+## Background
+Mem0 provides an `update(memory_id, data)` method to modify existing memories. You need to write a script to test how Mem0 OSS handles an update request for a memory ID that does not exist.
+
+## Requirements
+- Write a Python script at `/home/user/test_update.py`.
+- Initialize a Mem0 open-source `Memory` instance with default configuration.
+- Attempt to update a memory with the ID `nonexistent_memory_id_999` using the data `"I like green apples"`.
+- Catch any exception that is raised during the update attempt, or capture the return value if no exception is raised.
+- Write the string representation of the exception (or the return value) to `/home/user/output.txt`.
+
+## Implementation Guide
+1. Create `/home/user/test_update.py`.
+2. Import `Memory` from `mem0` and initialize it.
+3. Call `update("nonexistent_memory_id_999", data="I like green apples")`.
+4. Write the result or exception to `/home/user/output.txt`.
+5. Run the script.
+
+## Constraints
+- Project path: `/home/user`
+- Log file: `/home/user/output.txt`
