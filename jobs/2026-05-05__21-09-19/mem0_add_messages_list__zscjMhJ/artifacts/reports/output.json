@@ -1,0 +1,12 @@
+[
+    {
+        "id": "384318a4-1577-4d87-80e4-0716362967bf",
+        "memory": "Alice is a vegetarian and needs to find good food options for her trip to Japan.",
+        "hash": "30f490f5d17746ab4d084f45ec51994e",
+        "metadata": null,
+        "score": 0.3527569749386936,
+        "created_at": "2026-05-05T13:15:03.927708+00:00",
+        "updated_at": "2026-05-05T13:15:03.927708+00:00",
+        "user_id": "alice"
+    }
+]

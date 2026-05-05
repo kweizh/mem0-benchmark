@@ -1,0 +1,19 @@
+Failed to load spaCy lemma model: spaCy is not installed. Install it with: pip install mem0ai[nlp]
+Failed to load spaCy full model: spaCy is not installed. Install it with: pip install mem0ai[nlp]
+fastembed not installed — BM25 keyword search disabled. Install with: pip install fastembed
+Initializing Memory instance...
+Adding initial memories for user_id='bob'...
+Searching for peanut allergy memory...
+Found allergy memory ID: a8b3f80b-5f9d-40ba-9cfe-3c04cc93306f
+Updating memory...
+Updated memory successfully.
+Searching for Monday mornings memory...
+Could not find Monday morning memory.
+Adding tennis memory...
+Added tennis memory successfully.
+
+Process completed successfully.
+Final memories for Bob:
+- User's friend Bob loves to play tennis (ID: 03ce067e-119e-480c-afdd-e84e3604d21f)
+- User's friend Bob works as a software engineer (ID: 43e05a29-1615-455f-968c-c8b408d8c769)
+- Bob is allergic to peanuts and shellfish (ID: a8b3f80b-5f9d-40ba-9cfe-3c04cc93306f)

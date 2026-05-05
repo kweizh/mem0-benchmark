@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987270.3272913,
+            "stop": 1777987270.377429
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_app_script_exists",
+                "status": "passed",
+                "duration": 0.0004890321288257837,
+                "start": 1777987270.337618,
+                "stop": 1777987270.3383608,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_app_execution_and_results",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.024048550752922893,
+                "start": 1777987270.3385577,
+                "stop": 1777987270.377245,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_app_execution_and_results():\n        \"\"\"Priority 1/3: Run the script and verify the output file.\"\"\"\n        # Run the script\n        result = subprocess.run(\n            [\"python3\", \"app.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed with error: {result.stderr}\"\nE       AssertionError: Script execution failed with error: Traceback (most recent call last):\nE           File \"/home/user/app.py\", line 3, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', 'app.py'], returncode=1, stdout='', stderr='Traceback (most recent call last):\\n  Fi.../home/user/app.py\", line 3, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:23: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "results": [
+        {
+            "id": "7f3680a4-2b89-421a-a5e1-41fe0cc0f57c",
+            "memory": "User is allergic to peanuts",
+            "hash": "fde64a320163fe8d4730934e65b6f7a7",
+            "metadata": null,
+            "score": 0.2937489357482806,
+            "created_at": "2026-05-05T13:14:01.224520+00:00",
+            "updated_at": "2026-05-05T13:14:01.224520+00:00",
+            "user_id": "alice"
+        }
+    ]
+}

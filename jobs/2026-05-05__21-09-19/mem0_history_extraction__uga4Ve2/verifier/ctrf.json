@@ -1,0 +1,59 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 3,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987698.5032341,
+            "stop": 1777987698.5331192
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_qdrant_db_exists",
+                "status": "passed",
+                "duration": 0.0005112888757139444,
+                "start": 1777987698.5165114,
+                "stop": 1777987698.5172274,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_profile_json_exists",
+                "status": "passed",
+                "duration": 0.0003847412299364805,
+                "start": 1777987698.5174181,
+                "stop": 1777987698.5179331,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_profile_json_contents",
+                "status": "passed",
+                "duration": 0.0004752962850034237,
+                "start": 1777987698.5180986,
+                "stop": 1777987698.518695,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mem0_api_verify_memories",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006089536473155022,
+                "start": 1777987698.518858,
+                "stop": 1777987698.5329614,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_mem0_api_verify_memories():\n>       from mem0 import Memory\nE       ModuleNotFoundError: No module named 'mem0'\n\ntests/test_final_state.py:30: ModuleNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

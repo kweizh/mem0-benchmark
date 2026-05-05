@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987020.8393297,
+            "stop": 1777987020.8541615
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_alice_memories_file_exists",
+                "status": "passed",
+                "duration": 0.0006288262084126472,
+                "start": 1777987020.8503864,
+                "stop": 1777987020.851278,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_bob_memories_file_exists",
+                "status": "passed",
+                "duration": 0.0004977469798177481,
+                "start": 1777987020.851525,
+                "stop": 1777987020.8521888,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_alice_memories_content",
+                "status": "passed",
+                "duration": 0.0005473399069160223,
+                "start": 1777987020.8524134,
+                "stop": 1777987020.8531084,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_bob_memories_content",
+                "status": "passed",
+                "duration": 0.0005062108393758535,
+                "start": 1777987020.853325,
+                "stop": 1777987020.8539693,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

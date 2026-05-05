@@ -1,0 +1,54 @@
+{
+    "id": "22fbfd13-981c-4af6-b101-5d88a23aa133",
+    "started_at": "2026-05-05T21:09:23.139218",
+    "finished_at": "2026-05-05T21:37:25.401485",
+    "n_total_trials": 15,
+    "stats": {
+        "n_trials": 15,
+        "n_errors": 4,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 15,
+                "n_errors": 4,
+                "metrics": [
+                    {
+                        "mean": 0.13333333333333333
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "mem0_add_messages_list__zscjMhJ",
+                            "mem0_cross_user_isolation__skrCEaU"
+                        ],
+                        "0.0": [
+                            "mem0_add_and_search_basic__y8CT67N",
+                            "mem0_custom_llm_openai_model__TiSZo4m",
+                            "mem0_delete_specific_memory__9TjX7sn",
+                            "mem0_complex_or_filtering__DCMnScb",
+                            "mem0_delete_all_agent_memories__pF5JD4W",
+                            "mem0_delete_all_user_memories__WjYqXYj",
+                            "mem0_history_extraction__uga4Ve2",
+                            "mem0_metadata_filtering__f3fHBRS",
+                            "mem0_search_score_threshold__6A8y8K3",
+                            "mem0_multi_agent_shared_user__RpF5WoD",
+                            "mem0_update_nonexistent_memory__Vs8WTcb",
+                            "mem0_update_memory__FgBRKc4",
+                            "mem0_search_limit_results__yBSbHRE"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "mem0_history_extraction__uga4Ve2",
+                        "mem0_search_limit_results__yBSbHRE"
+                    ],
+                    "NonZeroAgentExitCodeError": [
+                        "mem0_metadata_filtering__f3fHBRS",
+                        "mem0_update_memory__FgBRKc4"
+                    ]
+                }
+            }
+        }
+    }
+}

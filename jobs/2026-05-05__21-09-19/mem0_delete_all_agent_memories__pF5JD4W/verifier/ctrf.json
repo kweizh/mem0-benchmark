@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987409.6581204,
+            "stop": 1777987409.7144682
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.0005052788183093071,
+                "start": 1777987409.6675062,
+                "stop": 1777987409.6682103,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_execution_and_output",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.013807968003675342,
+                "start": 1777987409.6684108,
+                "stop": 1777987409.697245,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution_and_output():\n        # Run the script\n        result = subprocess.run(\n            [\"python\", \"delete_memories.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Traceback (most recent call last):\nE           File \"/home/user/mem0-project/delete_memories.py\", line 2, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python', 'delete_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent call l...elete_memories.py\", line 2, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_travel_agent_memories_deleted",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.014570251805707812,
+                "start": 1777987409.6974568,
+                "stop": 1777987409.7142947,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_travel_agent_memories_deleted():\n        # We can use a short python snippet to verify using mem0\n        verify_script = \"\"\"\n    from mem0 import Memory\n    memory = Memory()\n    travel_mems = memory.get_all(agent_id='travel-agent')\n    support_mems = memory.get_all(agent_id='support-agent')\n    \n    if travel_mems:\n        print(f\"FAILED: Found travel agent memories: {travel_mems}\")\n        exit(1)\n    if not support_mems:\n        print(\"FAILED: No support agent memories found\")\n        exit(1)\n    print(\"SUCCESS\")\n    \"\"\"\n        verify_path = os.path.join(PROJECT_DIR, \"verify_memories.py\")\n        with open(verify_path, \"w\") as f:\n            f.write(verify_script)\n    \n        result = subprocess.run(\n            [\"python\", \"verify_memories.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Verification of memories failed: {result.stdout} {result.stderr}\"\nE       AssertionError: Verification of memories failed:  Traceback (most recent call last):\nE           File \"/home/user/mem0-project/verify_memories.py\", line 2, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python', 'verify_memories.py'], returncode=1, stdout='', stderr='Traceback (most recent call l...erify_memories.py\", line 2, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:61: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

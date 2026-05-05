@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777986803.345112,
+            "stop": 1777986803.3916087
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_update_memory_script_exists",
+                "status": "passed",
+                "duration": 0.0004811061080545187,
+                "start": 1777986803.3536925,
+                "stop": 1777986803.3543744,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mem0_final_state",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.02233427087776363,
+                "start": 1777986803.3545623,
+                "stop": 1777986803.3914366,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_mem0_final_state():\n        # We will write a small python script to check the memory state\n        # using the same config as setup.py\n        checker_script = os.path.join(PROJECT_DIR, \"verify_state.py\")\n        with open(checker_script, \"w\") as f:\n            f.write(\"\"\"\n    import json\n    from mem0 import Memory\n    \n    config = {\n        \"vector_store\": {\n            \"provider\": \"qdrant\",\n            \"config\": {\n                \"path\": \"/home/user/project/qdrant_db\"\n            }\n        }\n    }\n    \n    def main():\n        m = Memory.from_config(config)\n        memories = m.get_all(user_id=\"charlie\")\n        # memories is typically a list of dicts, or a dict containing a list\n        # Let's extract the text of the memories\n        results = []\n        if isinstance(memories, list):\n            items = memories\n        elif isinstance(memories, dict) and \"results\" in memories:\n            items = memories[\"results\"]\n        else:\n            items = memories\n    \n        for item in items:\n            if isinstance(item, dict) and \"memory\" in item:\n                results.append(item[\"memory\"])\n            elif hasattr(item, \"memory\"):\n                results.append(item.memory)\n            else:\n                results.append(str(item))\n    \n        print(json.dumps(results))\n    \n    if __name__ == \"__main__\":\n        main()\n    \"\"\")\n    \n        result = subprocess.run(\n            [\"python3\", \"verify_state.py\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"Failed to run verification script: {result.stderr}\"\nE       AssertionError: Failed to run verification script: Traceback (most recent call last):\nE           File \"/home/user/project/verify_state.py\", line 3, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', 'verify_state.py'], returncode=1, stdout='', stderr='Traceback (most recent call las...t/verify_state.py\", line 3, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:61: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

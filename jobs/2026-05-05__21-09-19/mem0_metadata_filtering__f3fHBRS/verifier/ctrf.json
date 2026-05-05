@@ -1,0 +1,40 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987555.793475,
+            "stop": 1777987555.8419402
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_output_file_exists",
+                "status": "failed",
+                "duration": 0.02162682102061808,
+                "start": 1777987555.802784,
+                "stop": 1777987555.8389897,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def run_script():\n        \"\"\"Run the user's script to generate the output.\"\"\"\n        assert os.path.isfile(SCRIPT_FILE), f\"Script {SCRIPT_FILE} does not exist.\"\n        result = subprocess.run(\n            [\"python3\", \"run.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Traceback (most recent call last):\nE           File \"/home/user/myproject/run.py\", line 3, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', 'run.py'], returncode=1, stdout='', stderr='Traceback (most recent call last):\\n  Fi.../myproject/run.py\", line 3, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:20: AssertionError"
+            },
+            {
+                "name": "test_final_state.py::test_output_contains_correct_memories",
+                "status": "failed",
+                "duration": 0.00030945707112550735,
+                "start": 1777987555.8392148,
+                "stop": 1777987555.841769,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def run_script():\n        \"\"\"Run the user's script to generate the output.\"\"\"\n        assert os.path.isfile(SCRIPT_FILE), f\"Script {SCRIPT_FILE} does not exist.\"\n        result = subprocess.run(\n            [\"python3\", \"run.py\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Traceback (most recent call last):\nE           File \"/home/user/myproject/run.py\", line 3, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', 'run.py'], returncode=1, stdout='', stderr='Traceback (most recent call last):\\n  Fi.../myproject/run.py\", line 3, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:20: AssertionError"
+            }
+        ]
+    }
+}

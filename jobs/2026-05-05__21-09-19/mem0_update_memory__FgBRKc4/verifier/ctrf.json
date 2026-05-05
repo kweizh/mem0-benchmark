@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777988154.5081751,
+            "stop": 1777988154.5336802
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.0005008149892091751,
+                "start": 1777988154.5168738,
+                "stop": 1777988154.5176172,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_final_memories",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0008340522181242704,
+                "start": 1777988154.517807,
+                "stop": 1777988154.5335143,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_final_memories():\n        sys.path.insert(0, PROJECT_DIR)\n    \n        try:\n            from config import MEM0_CONFIG\n>           from mem0 import Memory\nE           ModuleNotFoundError: No module named 'mem0'\n\ntests/test_final_state.py:16: ModuleNotFoundError\n\nDuring handling of the above exception, another exception occurred:\n\n    def test_final_memories():\n        sys.path.insert(0, PROJECT_DIR)\n    \n        try:\n            from config import MEM0_CONFIG\n            from mem0 import Memory\n        except ImportError as e:\n>           pytest.fail(f\"Failed to import required modules: {e}\")\nE           Failed: Failed to import required modules: No module named 'mem0'\n\ntests/test_final_state.py:18: Failed",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

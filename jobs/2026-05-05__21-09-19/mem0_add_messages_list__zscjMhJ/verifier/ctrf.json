@@ -1,0 +1,38 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987019.58653,
+            "stop": 1777987019.6003904
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.0006177001632750034,
+                "start": 1777987019.598215,
+                "stop": 1777987019.599104,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_output_file_exists_and_contains_vegetarian_fact",
+                "status": "passed",
+                "duration": 0.000534948194399476,
+                "start": 1777987019.599376,
+                "stop": 1777987019.6000924,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

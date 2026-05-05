@@ -1,0 +1,59 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 3,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777987008.4101164,
+            "stop": 1777987008.458311
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.0004945183172821999,
+                "start": 1777987008.4193945,
+                "stop": 1777987008.4200904,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_execution",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0225839929189533,
+                "start": 1777987008.4202852,
+                "stop": 1777987008.456662,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_execution():\n        result = subprocess.run(\n            [\"python3\", \"memory_ops.py\"],\n            capture_output=True, text=True, cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"Script execution failed: {result.stderr}\"\nE       AssertionError: Script execution failed: Traceback (most recent call last):\nE           File \"/home/user/mem0_project/memory_ops.py\", line 3, in <module>\nE             from mem0 import Memory\nE         ModuleNotFoundError: No module named 'mem0'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', 'memory_ops.py'], returncode=1, stdout='', stderr='Traceback (most recent call last)...ect/memory_ops.py\", line 3, in <module>\\n    from mem0 import Memory\\nModuleNotFoundError: No module named \\'mem0\\'\\n').returncode\n\ntests/test_final_state.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "passed",
+                "duration": 0.00042073801159858704,
+                "start": 1777987008.4568648,
+                "stop": 1777987008.4574132,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_contain_memory",
+                "status": "passed",
+                "duration": 0.00043309200555086136,
+                "start": 1777987008.457577,
+                "stop": 1777987008.458129,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

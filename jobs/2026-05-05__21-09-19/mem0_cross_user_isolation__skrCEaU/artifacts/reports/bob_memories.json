@@ -1,0 +1,12 @@
+[
+    {
+        "id": "8dcb58d4-351d-4ac6-9cb2-79fdafb1cae1",
+        "memory": "User is a vegetarian.",
+        "hash": "bd5519bacb0ce7f9d6b33bee938d4dd8",
+        "metadata": null,
+        "score": 0.37507753951653555,
+        "created_at": "2026-05-05T13:15:48.843323+00:00",
+        "updated_at": "2026-05-05T13:15:48.843323+00:00",
+        "user_id": "bob"
+    }
+]

@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1777988230.996499,
+            "stop": 1777988231.0234785
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "passed",
+                "duration": 0.00048599764704704285,
+                "start": 1777988231.0048084,
+                "stop": 1777988231.0054922,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_length_is_two",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00073850410990417,
+                "start": 1777988231.0056763,
+                "stop": 1777988231.0198867,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_length_is_two():\n        \"\"\"Priority 3 fallback: parse JSON output to verify length.\"\"\"\n        with open(RESULTS_FILE, \"r\") as f:\n            try:\n                data = json.load(f)\n            except json.JSONDecodeError:\n                pytest.fail(f\"File {RESULTS_FILE} is not valid JSON.\")\n    \n>       assert isinstance(data, list), f\"Expected a JSON list in {RESULTS_FILE}, got {type(data)}.\"\nE       AssertionError: Expected a JSON list in /home/user/project/results.json, got <class 'dict'>.\nE       assert False\nE        +  where False = isinstance({'results': [{'created_at': '2026-05-05T13:35:26.577854+00:00', 'hash': 'd66179c35a7e09f837363fab88a69c3d', 'id': '86c...47e000b99d4bf47e5456e0cb', 'id': '03bfeb67-b02c-470e-b887-72bec4991594', 'memory': 'Alice has a dog named Max.', ...}]}, list)\n\ntests/test_final_state.py:19: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_results_contain_tennis",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007471791468560696,
+                "start": 1777988231.0203116,
+                "stop": 1777988231.0232804,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_contain_tennis():\n        \"\"\"Priority 3 fallback: parse JSON output to verify content.\"\"\"\n        with open(RESULTS_FILE, \"r\") as f:\n            data = json.load(f)\n    \n        found_tennis = False\n        for item in data:\n            # The memory text could be in item['memory'] or item['text'] depending on mem0 version,\n            # but we can just check if 'tennis' is in the string representation of the item\n            if \"tennis\" in json.dumps(item).lower():\n                found_tennis = True\n                break\n    \n>       assert found_tennis, \"Expected to find 'tennis' in the search results.\"\nE       AssertionError: Expected to find 'tennis' in the search results.\nE       assert False\n\ntests/test_final_state.py:35: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
