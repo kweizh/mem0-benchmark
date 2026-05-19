@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-2:I[42654,["/mem0-benchmark/_next/static/chunks/babff0e7418ab052.js","/mem0-benchmark/_next/static/chunks/3ecbb78a8ff87549.js","/mem0-benchmark/_next/static/chunks/9dc926840f38370c.js","/mem0-benchmark/_next/static/chunks/be08138953094657.js"],"TasksPageClient"]
-14:I[75049,["/mem0-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/mem0-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"OutletBoundary"]
-15:"$Sreact.suspense"
-3:T4e7,# Mem0 Add and Search
+2:"$Sreact.suspense"
+3:I[42654,["/mem0-benchmark/_next/static/chunks/babff0e7418ab052.js","/mem0-benchmark/_next/static/chunks/3ecbb78a8ff87549.js","/mem0-benchmark/_next/static/chunks/638a44bd73dc894e.js","/mem0-benchmark/_next/static/chunks/ab9c434cfac62bb4.js"],"TasksPageClient"]
+15:I[75049,["/mem0-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/mem0-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"OutletBoundary"]
+4:T4e7,# Mem0 Add and Search
 
 ## Background
 Mem0 (formerly Embedchain's memory component) manages long-term memory for LLMs. It extracts facts from conversations, stores them in a vector structure, and retrieves relevant context for future interactions.
@@ -29,7 +29,7 @@ Mem0 (formerly Embedchain's memory component) manages long-term memory for LLMs.
 - Use the default OSS configuration, which requires `OPENAI_API_KEY` to be set in the environment.
 
 ## Integrations
-- OpenAI4:T53d,# Mem0: Add Messages List
+- OpenAI5:T53d,# Mem0: Add Messages List
 
 ## Background
 Mem0 manages long-term memory for LLMs. It can extract facts from a list of conversational messages and store them in its memory store.
@@ -50,7 +50,7 @@ Write a Python script `add_messages.py` that uses the open-source Mem0 `Memory` 
 - The script must be saved as `/home/user/mem0-project/add_messages.py`.
 - The output file must be saved as `/home/user/mem0-project/output.json`.
 - Run the script to generate the output.
-- Environment variable `OPENAI_API_KEY` is available in the environment.5:T4ee,# Mem0 Complex OR Filtering
+- Environment variable `OPENAI_API_KEY` is available in the environment.6:T4ee,# Mem0 Complex OR Filtering
 
 ## Background
 Mem0 partitions memories by `user_id`, `agent_id`, `app_id`, and `run_id`. When building multi-agent systems, you often need to retrieve memories that belong to EITHER the user OR the agent. Using an AND logic for these IDs will return nothing because records are stored per-entity. You need to use an OR filter.
@@ -69,7 +69,7 @@ Write a Python script at `/home/user/app.py` that:
 - Output file: `/home/user/results.json`
 
 ## Integrations
-- OpenAI6:T47a,# Mem0 Cross-User Isolation
+- OpenAI7:T47a,# Mem0 Cross-User Isolation
 
 ## Background
 Mem0 manages long-term memory for AI agents, allowing you to isolate context using `user_id`, `agent_id`, and other scopes. In this task, you will verify that memories are properly isolated between users.
@@ -88,7 +88,7 @@ Mem0 manages long-term memory for AI agents, allowing you to isolate context usi
 - Ensure you use the `OPENAI_API_KEY` environment variable for the default OpenAI embedder/LLM.
 
 ## Integrations
-- OpenAI7:T54a,# Mem0 Custom LLM Model
+- OpenAI8:T54a,# Mem0 Custom LLM Model
 
 ## Background
 Mem0 manages long-term memory for LLMs. By default, it uses OpenAI's `gpt-4o` model for its internal operations (like entity extraction and summarization) when the OpenAI provider is used. You can override this to use a different model, such as `gpt-4o-mini`, for cost efficiency.
@@ -113,7 +113,7 @@ Mem0 manages long-term memory for LLMs. By default, it uses OpenAI's `gpt-4o` mo
 - You must use `gpt-4o-mini` as the LLM model.
 
 ## Integrations
-- OpenAI8:T6ee,# Delete All Memories for a Specific Agent in Mem0
+- OpenAI9:T6ee,# Delete All Memories for a Specific Agent in Mem0
 
 ## Background
 Mem0 is a memory layer for AI agents. Memories can be scoped to specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. In a multi-agent system, you might want to clear all memories associated with a specific agent without affecting other agents or users.
@@ -142,7 +142,7 @@ Mem0 is a memory layer for AI agents. Memories can be scoped to specific entitie
 - Use Mem0 Open Source version.
 
 ## Integrations
-- OpenAI (for default embedding/LLM in Mem0)9:T4e5,# Delete All Memories for a User
+- OpenAI (for default embedding/LLM in Mem0)a:T4e5,# Delete All Memories for a User
 
 ## Background
 You are managing an AI companion application that uses `mem0ai` (Open Source version) to store user memories. A user named "alice" has requested to have all her data deleted from the system.
@@ -164,7 +164,7 @@ You are managing an AI companion application that uses `mem0ai` (Open Source ver
 - Project path: `/home/user`
 - Setup script: `/home/user/setup_memories.py`
 - Script path: `/home/user/delete_alice_memories.py`
-- The environment variable `OPENAI_API_KEY` is already set and must be used by Mem0 for its default OpenAI integration.a:T4d0,# Mem0 Delete Specific Memory
+- The environment variable `OPENAI_API_KEY` is already set and must be used by Mem0 for its default OpenAI integration.b:T4d0,# Mem0 Delete Specific Memory
 
 ## Background
 Mem0 manages long-term memory for AI agents. In this task, you will use Mem0 Open Source to search for a specific memory, delete it by its ID, and add an updated memory.
@@ -186,7 +186,7 @@ Mem0 manages long-term memory for AI agents. In this task, you will use Mem0 Ope
 - Do not delete all memories for the user; only delete the specific one.
 
 ## Integrations
-- OpenAIb:T604,# Mem0 History Extraction
+- OpenAIc:T604,# Mem0 History Extraction
 
 ## Background
 You need to process a user's chat history using the Mem0 open-source library to extract long-term memories and build a user profile.
@@ -224,7 +224,7 @@ You need to process a user's chat history using the Mem0 open-source library to 
 - The `OPENAI_API_KEY` environment variable is already set.
 
 ## Integrations
-- OpenAIc:T624,# Mem0 Metadata Filtering
+- OpenAId:T624,# Mem0 Metadata Filtering
 
 ## Background
 Mem0 is a memory layer for AI agents. Memories are partitioned by specific entities like `user_id`, `agent_id`, `app_id`, and `run_id`. When retrieving memories that belong to different entities, you must use proper logical filters (like `OR`) because records are stored per-entity.
@@ -249,7 +249,7 @@ Write a Python script that uses Mem0 Open Source to:
 - Log file: `/home/user/myproject/output.json`
 
 ## Integrations
-- OpenAId:T6b9,# Mem0 Multi-Agent Shared User Context
+- OpenAIe:T6b9,# Mem0 Multi-Agent Shared User Context
 
 ## Background
 In multi-agent systems, agents often share user context but maintain separate "Agent Memories" (e.g., personality, instructions). Mem0 isolates memories by entity IDs (`user_id`, `agent_id`, etc.). To retrieve both a user's memory and a specific agent's memory for a prompt, you must query for both correctly.
@@ -270,7 +270,7 @@ Write a Python script `/home/user/mem0-project/multi_agent.py` that does the fol
 - You must use `OPENAI_API_KEY` from the environment for Mem0's default LLM/Embedder.
 
 ## Integrations
-- OpenAIe:T4aa,# Mem0 Search with Limit
+- OpenAIf:T4aa,# Mem0 Search with Limit
 
 ## Background
 Mem0 manages long-term memory for AI agents. When retrieving context, you often want to limit the number of results returned to fit within an LLM's context window.
@@ -295,7 +295,7 @@ Mem0 manages long-term memory for AI agents. When retrieving context, you often 
 
 ## Constraints
 - Project path: /home/user/project
-- Use `OPENAI_API_KEY` from the environment.f:T7ad,# Update and Manage Mem0 Memories
+- Use `OPENAI_API_KEY` from the environment.10:T7ad,# Update and Manage Mem0 Memories
 
 ## Background
 You are working on a Python project that uses the `mem0ai` library to manage long-term memory for an AI agent. The project is located at `/home/user/mem0_project`.
@@ -329,7 +329,7 @@ You need to write a script `process_memories.py` in `/home/user/mem0_project` th
 - You must use the existing `MEM0_CONFIG` to ensure the local database is correctly accessed.
 
 ## Integrations
-- OpenAI10:T42e,# Update Nonexistent Memory in Mem0
+- OpenAI11:T42e,# Update Nonexistent Memory in Mem0
 
 ## Background
 Mem0 provides an `update(memory_id, data)` method to modify existing memories. You need to write a script to test how Mem0 OSS handles an update request for a memory ID that does not exist.
@@ -350,8 +350,8 @@ Mem0 provides an `update(memory_id, data)` method to modify existing memories. Y
 
 ## Constraints
 - Project path: `/home/user`
-- Log file: `/home/user/output.txt`0:{"buildId":"AoGVA7lDBa7Ot2LNecc0h","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-background text-foreground font-sans selection:bg-primary/20","children":[["$","div",null,{"className":"fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"}],["$","$L2",null,{"tasksData":[{"taskName":"mem0_add_and_search_basic","instruction":"$3","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_add_and_search_basic__y8CT67N","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":457.875,"latency_breakdown":{"env_setup":59.852,"agent_setup":69.85,"agent_exec":300.52,"verifier":12.318},"taskName":"mem0_add_and_search_basic","jobId":"y8CT67N","exec_duration":300.52}]},{"taskName":"mem0_add_messages_list","instruction":"$4","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_add_messages_list__zscjMhJ","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":474.823,"latency_breakdown":{"env_setup":46.291,"agent_setup":132.821,"agent_exec":262.022,"verifier":12.536},"taskName":"mem0_add_messages_list","jobId":"zscjMhJ","exec_duration":262.022}]},{"taskName":"mem0_complex_or_filtering","instruction":"$5","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_complex_or_filtering__DCMnScb","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":468.082,"latency_breakdown":{"env_setup":3.765,"agent_setup":23.915,"agent_exec":412.135,"verifier":12.827},"taskName":"mem0_complex_or_filtering","jobId":"DCMnScb","exec_duration":412.135}]},{"taskName":"mem0_cross_user_isolation","instruction":"$6","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_cross_user_isolation__skrCEaU","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":475.965,"latency_breakdown":{"env_setup":45.184,"agent_setup":27.754,"agent_exec":369.694,"verifier":12.32},"taskName":"mem0_cross_user_isolation","jobId":"skrCEaU","exec_duration":369.694}]},{"taskName":"mem0_custom_llm_openai_model","instruction":"$7","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_custom_llm_openai_model__TiSZo4m","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":647.512,"latency_breakdown":{"env_setup":45.212,"agent_setup":29.639,"agent_exec":421.409,"verifier":137.046},"taskName":"mem0_custom_llm_openai_model","jobId":"TiSZo4m","exec_duration":421.409}]},{"taskName":"mem0_delete_all_agent_memories","instruction":"$8","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_delete_all_agent_memories__pF5JD4W","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":400.952,"latency_breakdown":{"env_setup":12.621,"agent_setup":28.903,"agent_exec":331.902,"verifier":12.505},"taskName":"mem0_delete_all_agent_memories","jobId":"pF5JD4W","exec_duration":331.902}]},{"taskName":"mem0_delete_all_user_memories","instruction":"$9","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_delete_all_user_memories__WjYqXYj","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":324.483,"latency_breakdown":{"env_setup":19.464,"agent_setup":26.348,"agent_exec":251.422,"verifier":12.864},"taskName":"mem0_delete_all_user_memories","jobId":"WjYqXYj","exec_duration":251.422}]},{"taskName":"mem0_delete_specific_memory","instruction":"$a","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_delete_specific_memory__9TjX7sn","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":251.79,"latency_breakdown":{"env_setup":45.246,"agent_setup":27.905,"agent_exec":150.714,"verifier":13.571},"taskName":"mem0_delete_specific_memory","jobId":"9TjX7sn","exec_duration":150.714}]},{"taskName":"mem0_history_extraction","instruction":"$b","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_history_extraction__uga4Ve2","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":671.37,"latency_breakdown":{"env_setup":18.315,"agent_setup":26.031,"agent_exec":600.117,"verifier":12.154},"taskName":"mem0_history_extraction","jobId":"uga4Ve2","exec_duration":600.117}]},{"taskName":"mem0_metadata_filtering","instruction":"$c","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_metadata_filtering__f3fHBRS","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":359.488,"latency_breakdown":{"env_setup":3.721,"agent_setup":24.102,"agent_exec":301.518,"verifier":13.036},"taskName":"mem0_metadata_filtering","jobId":"f3fHBRS","exec_duration":301.518}]},{"taskName":"mem0_multi_agent_shared_user","instruction":"$d","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_multi_agent_shared_user__RpF5WoD","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":440.059,"latency_breakdown":{"env_setup":4.522,"agent_setup":24.211,"agent_exec":383.447,"verifier":13.211},"taskName":"mem0_multi_agent_shared_user","jobId":"RpF5WoD","exec_duration":383.447}]},{"taskName":"mem0_search_limit_results","instruction":"$e","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_search_limit_results__yBSbHRE","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":672.379,"latency_breakdown":{"env_setup":13.276,"agent_setup":30.821,"agent_exec":600.124,"verifier":13.847},"taskName":"mem0_search_limit_results","jobId":"yBSbHRE","exec_duration":600.124}]},{"taskName":"mem0_search_score_threshold","instruction":"# Mem0 Search Score Threshold\n\n## Background\nYou have a Python script `setup_memories.py` at `/home/user/project` that initializes a `Memory` instance using Mem0 Open Source and adds several memories for `user_id=\"bob\"`. Your task is to write a script `search_mem0.py` that retrieves relevant memories and filters them based on a score threshold.\n\n## Requirements\n- Create a script `/home/user/project/search_mem0.py`.\n- Initialize `Memory` from `mem0` using the default configuration (which uses Qdrant and OpenAI).\n- Search for the query \"What are my dietary restrictions?\" for `user_id=\"bob\"`.\n- Filter the search results, keeping only memories with a `score` strictly greater than `0.6`.\n- Write the `memory` text of the matched results to `/home/user/project/high_score_memories.txt`, one per line.\n\n## Constraints\n- Project path: `/home/user/project`\n- You must use `mem0ai`.\n\n## Integrations\n- OpenAI","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_search_score_threshold__6A8y8K3","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":466.306,"latency_breakdown":{"env_setup":3.606,"agent_setup":22.06,"agent_exec":411.302,"verifier":12.84},"taskName":"mem0_search_score_threshold","jobId":"6A8y8K3","exec_duration":411.302}]},{"taskName":"mem0_update_memory","instruction":"$f","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_update_memory__FgBRKc4","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":605.821,"latency_breakdown":{"env_setup":9.312,"agent_setup":25.33,"agent_exec":541.649,"verifier":14.637},"taskName":"mem0_update_memory","jobId":"FgBRKc4","exec_duration":541.649}]},{"taskName":"mem0_update_nonexistent_memory","instruction":"$10","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_update_nonexistent_memory__Vs8WTcb","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":138.822,"latency_breakdown":{"env_setup":4.399,"agent_setup":23.735,"agent_exec":83.409,"verifier":12.517},"taskName":"mem0_update_nonexistent_memory","jobId":"Vs8WTcb","exec_duration":83.409}]}]}]]}],["$L11","$L12"],"$L13"]}],"loading":null,"isPartial":false}
-11:["$","script","script-0",{"src":"/mem0-benchmark/_next/static/chunks/9dc926840f38370c.js","async":true}]
-12:["$","script","script-1",{"src":"/mem0-benchmark/_next/static/chunks/be08138953094657.js","async":true}]
-13:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+- Log file: `/home/user/output.txt`0:{"buildId":"DwNZGplPISPmT-5Lvjl0t","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-background text-foreground font-sans selection:bg-primary/20","children":[["$","div",null,{"className":"fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"}],["$","$2",null,{"fallback":["$","div",null,{"className":"container mx-auto py-8 text-center","children":"Loading tasks..."}],"children":["$","$L3",null,{"tasksData":[{"taskName":"mem0_add_and_search_basic","instruction":"$4","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_add_and_search_basic__y8CT67N","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":457.875,"latency_breakdown":{"env_setup":59.852,"agent_setup":69.85,"agent_exec":300.52,"verifier":12.318},"taskName":"mem0_add_and_search_basic","jobId":"y8CT67N","exec_duration":300.52}]},{"taskName":"mem0_add_messages_list","instruction":"$5","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_add_messages_list__zscjMhJ","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":474.823,"latency_breakdown":{"env_setup":46.291,"agent_setup":132.821,"agent_exec":262.022,"verifier":12.536},"taskName":"mem0_add_messages_list","jobId":"zscjMhJ","exec_duration":262.022}]},{"taskName":"mem0_complex_or_filtering","instruction":"$6","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_complex_or_filtering__DCMnScb","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":468.082,"latency_breakdown":{"env_setup":3.765,"agent_setup":23.915,"agent_exec":412.135,"verifier":12.827},"taskName":"mem0_complex_or_filtering","jobId":"DCMnScb","exec_duration":412.135}]},{"taskName":"mem0_cross_user_isolation","instruction":"$7","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_cross_user_isolation__skrCEaU","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":475.965,"latency_breakdown":{"env_setup":45.184,"agent_setup":27.754,"agent_exec":369.694,"verifier":12.32},"taskName":"mem0_cross_user_isolation","jobId":"skrCEaU","exec_duration":369.694}]},{"taskName":"mem0_custom_llm_openai_model","instruction":"$8","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_custom_llm_openai_model__TiSZo4m","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":647.512,"latency_breakdown":{"env_setup":45.212,"agent_setup":29.639,"agent_exec":421.409,"verifier":137.046},"taskName":"mem0_custom_llm_openai_model","jobId":"TiSZo4m","exec_duration":421.409}]},{"taskName":"mem0_delete_all_agent_memories","instruction":"$9","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_delete_all_agent_memories__pF5JD4W","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":400.952,"latency_breakdown":{"env_setup":12.621,"agent_setup":28.903,"agent_exec":331.902,"verifier":12.505},"taskName":"mem0_delete_all_agent_memories","jobId":"pF5JD4W","exec_duration":331.902}]},{"taskName":"mem0_delete_all_user_memories","instruction":"$a","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_delete_all_user_memories__WjYqXYj","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":324.483,"latency_breakdown":{"env_setup":19.464,"agent_setup":26.348,"agent_exec":251.422,"verifier":12.864},"taskName":"mem0_delete_all_user_memories","jobId":"WjYqXYj","exec_duration":251.422}]},{"taskName":"mem0_delete_specific_memory","instruction":"$b","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_delete_specific_memory__9TjX7sn","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":251.79,"latency_breakdown":{"env_setup":45.246,"agent_setup":27.905,"agent_exec":150.714,"verifier":13.571},"taskName":"mem0_delete_specific_memory","jobId":"9TjX7sn","exec_duration":150.714}]},{"taskName":"mem0_history_extraction","instruction":"$c","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_history_extraction__uga4Ve2","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":671.37,"latency_breakdown":{"env_setup":18.315,"agent_setup":26.031,"agent_exec":600.117,"verifier":12.154},"taskName":"mem0_history_extraction","jobId":"uga4Ve2","exec_duration":600.117}]},{"taskName":"mem0_metadata_filtering","instruction":"$d","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_metadata_filtering__f3fHBRS","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":359.488,"latency_breakdown":{"env_setup":3.721,"agent_setup":24.102,"agent_exec":301.518,"verifier":13.036},"taskName":"mem0_metadata_filtering","jobId":"f3fHBRS","exec_duration":301.518}]},{"taskName":"mem0_multi_agent_shared_user","instruction":"$e","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_multi_agent_shared_user__RpF5WoD","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":440.059,"latency_breakdown":{"env_setup":4.522,"agent_setup":24.211,"agent_exec":383.447,"verifier":13.211},"taskName":"mem0_multi_agent_shared_user","jobId":"RpF5WoD","exec_duration":383.447}]},{"taskName":"mem0_search_limit_results","instruction":"$f","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_search_limit_results__yBSbHRE","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":672.379,"latency_breakdown":{"env_setup":13.276,"agent_setup":30.821,"agent_exec":600.124,"verifier":13.847},"taskName":"mem0_search_limit_results","jobId":"yBSbHRE","exec_duration":600.124}]},{"taskName":"mem0_search_score_threshold","instruction":"# Mem0 Search Score Threshold\n\n## Background\nYou have a Python script `setup_memories.py` at `/home/user/project` that initializes a `Memory` instance using Mem0 Open Source and adds several memories for `user_id=\"bob\"`. Your task is to write a script `search_mem0.py` that retrieves relevant memories and filters them based on a score threshold.\n\n## Requirements\n- Create a script `/home/user/project/search_mem0.py`.\n- Initialize `Memory` from `mem0` using the default configuration (which uses Qdrant and OpenAI).\n- Search for the query \"What are my dietary restrictions?\" for `user_id=\"bob\"`.\n- Filter the search results, keeping only memories with a `score` strictly greater than `0.6`.\n- Write the `memory` text of the matched results to `/home/user/project/high_score_memories.txt`, one per line.\n\n## Constraints\n- Project path: `/home/user/project`\n- You must use `mem0ai`.\n\n## Integrations\n- OpenAI","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_search_score_threshold__6A8y8K3","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":466.306,"latency_breakdown":{"env_setup":3.606,"agent_setup":22.06,"agent_exec":411.302,"verifier":12.84},"taskName":"mem0_search_score_threshold","jobId":"6A8y8K3","exec_duration":411.302}]},{"taskName":"mem0_update_memory","instruction":"$10","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_update_memory__FgBRKc4","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":605.821,"latency_breakdown":{"env_setup":9.312,"agent_setup":25.33,"agent_exec":541.649,"verifier":14.637},"taskName":"mem0_update_memory","jobId":"FgBRKc4","exec_duration":541.649}]},{"taskName":"mem0_update_nonexistent_memory","instruction":"$11","trials":[{"job_name":"2026-05-05__21-09-19","trial_name":"mem0_update_nonexistent_memory__Vs8WTcb","model":"gemini-3-flash","rawModel":"google/gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":138.822,"latency_breakdown":{"env_setup":4.399,"agent_setup":23.735,"agent_exec":83.409,"verifier":12.517},"taskName":"mem0_update_nonexistent_memory","jobId":"Vs8WTcb","exec_duration":83.409}]}]}]}]]}],["$L12","$L13"],"$L14"]}],"loading":null,"isPartial":false}
+12:["$","script","script-0",{"src":"/mem0-benchmark/_next/static/chunks/638a44bd73dc894e.js","async":true}]
+13:["$","script","script-1",{"src":"/mem0-benchmark/_next/static/chunks/ab9c434cfac62bb4.js","async":true}]
+14:["$","$L15",null,{"children":["$","$2",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
 16:null
